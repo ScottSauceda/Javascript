@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JS Film Genre Voting App</title>
+  <style>
+    body{
+      background-color: #123;
+      font-family: sans-serif;
+      color: #153;
+    }
+    
+    #wrapper{
+      
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+      grid-template-areas:
+        "banner"
+        "action"
+        "animation"
+        "biography"
+        "comedy"   
+        "drama"
+        "family"
+        "horror"
+        "musical"
+        "mystery"
+        "romance"   
+        "scifi"    
+        "sports"
+        "aside";
+    
+      background-color: #600;
+      width: 95%;
+      height: 90vh;
+      margin: 0 auto;
+      padding: 2rem;
+      overflow: auto;
+    }
+    
+    .genre-btn{
+      width: 206px;
+      height: 259px;
+      margin: 5px auto;
+      padding: 0;
+      border-radius: 10px;
+      background-position: left;
+      background-size: cover;
+      cursor: pointer;
+      justify-self: center;
+    }
+    
+    @media (min-width:500px){
+      #wrapper{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "banner  banner"
+          "action  animation"
+          "biography comedy"
+          "drama   family"
+          "horror  musical"
+          "mystery romance"
+          "scifi   sports"
+          "adventure classics"
+          "thriller ."
+          "aside   aside";
+      }
+      .genre-btn{width:185px; height:235px;}
+    }
+    
+    @media (min-width:800px){
+      #wrapper{
+        grid-template-columns: 1fr 1fr 1fr 4fr;
+        grid-template-areas:
+          "banner    banner    banner    aside"
+          "action    animation biography aside"
+          "comedy    drama     family    aside"
+          "horror    musical   mystery   aside"
+          "romance   scifi     sports    aside";
+      }
+      .genre-btn{ width:145px; height:180px;}
+    }
+    
+    @media (min-width:1100px){
+      #wrapper{
+        grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+        grid-template-areas:
+          "banner  banner    banner     banner    aside"
+          "action  animation biography  comedy    aside"
+          "drama   family    horror     musical   aside"
+          "mystery romance   scifi      sports    aside"
+          "adventure thriller classics . aside";
+      }
+      .genre-btn{width: 120px; height: 152px;}
+    }    
+    /*
+        min-width: 500px
+          2 column view in #wrapper 1fr 1fr - Aside on bottom
+          width: 185px, height: 235px in .genre-btn
+        
+        min-width: 800px
+          3 column view in #wrapper 1fr 1fr 1fr 4fr - Aside on right
+          width: 145px, height: 180px in .genre-btn
+          
+        min-width: 1100px
+          4 column view in #wrapper 1fr 1fr 1fr 1fr 3fr - Aside on right
+          width: 120px, height: 152px in .genre-btn
+    
+    */
+    
+    
+    
+
+  
+    #banner{
+      grid-area: banner;
+      background-image: url("images/popcorn-vote-logo.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 222px;
+    }
+    
+    aside{
+      background-color: rgba(244, 222, 222, 0.1);
+      grid-area: aside; 
+      font-family:sans-serif;
+      letter-spacing: 3px;
+      line-height: 24px;
+      color: #ECC;
+      
+      text-transform: uppercase;
+      padding: 5px;
+      font-size: 14px;
+/*      overflow-y: scroll;*/
+      margin-top: 0.5rem;
+      border-radius: 7px;
+      border: 0px solid rgba(244, 244, 244, 0.8);
+    }
+    
+    aside div p{
+      display:inline;
+      font-size: 0.9rem;
+      color: yellow;
+      padding: 0;
+    }
+
+    .vote-bar{
+      display:block;
+      padding: 0;
+      margin: 0;
+      height: 25px;
+      width: 5px;
+      background-color: rgba(244, 244, 11, 0.6);
+      box-shadow: 2px 2px 2px darkgreen;
+    }
+    
+    
+    aside div{
+      background-color: rgba(24, 222, 22, 0.2);
+      padding: 2px 0px 0px 10px;
+      border-bottom: 2px solid yellowgreen;
+      box-shadow: 2px 2px 2px darkolivegreen;
+    }
+
+    h4{
+      display: inline-block;
+      padding: 2px;
+      width: 20%;
+    }
+    
+    p{
+      display: inline-block;
+      padding: 2px;
+      margin-left: 10%;
+    }
+    
+
+    
+    
+    #action{
+      grid-area: action;
+      background-image: url("images/btns/btn-action-1.png");
+    }
+    #action:hover{
+      background-image: url("images/btns/btn-action-2.png");
+    }
+    #animation{
+      grid-area: animation;
+      background-image: url("images/btns/btn-animation-1.png");
+    }
+    #animation:hover{
+      background-image: url("images/btns/btn-animation-2.png");
+    }
+    #comedy{
+      grid-area: comedy;
+      background-image: url("images/btns/btn-comedy-1.png");
+    }
+    #comedy:hover{
+      background-image: url("images/btns/btn-comedy-2.png");
+    }
+    #drama{
+      grid-area: drama;
+      background-image: url("images/btns/btn-drama-1.png");
+    }
+    #drama:hover{
+      background-image: url("images/btns/btn-drama-2.png");
+    }
+    #family{
+      grid-area: family;
+      background-image: url("images/btns/btn-family-1.png");
+    }
+    #family:hover{
+      background-image: url("images/btns/btn-family-2.png");
+    }
+    #horror{
+      grid-area: horror;
+      background-image: url("images/btns/btn-horror-1.png");
+    }
+    #horror:hover{
+      background-image: url("images/btns/btn-horror-2.png");
+    }
+    #mystery{
+      grid-area: mystery;
+      background-image: url("images/btns/btn-mystery-1.png");
+    }
+    #mystery:hover{
+      background-image: url("images/btns/btn-mystery-2.png");
+    }
+    #romance{
+      grid-area: romance;
+      background-image: url("images/btns/btn-romance-1.png");
+    }
+    #romance:hover{
+      background-image: url("images/btns/btn-romance-2.png");
+    }
+    #scifi{
+      grid-area: scifi;
+      background-image: url("images/btns/btn-scifi-1.png");
+    }
+    #scifi:hover{
+      background-image: url("images/btns/btn-scifi-2.png");
+    }
+    
+    #biography{
+      grid-area: biography;
+      background-image: url("images/btns/btn-biography-1.png");
+    }
+    #biography:hover{
+      background-image: url("images/btns/btn-biography-2.png");
+    }
+    
+    #musical{
+      grid-area: musical;
+      background-image: url("images/btns/btn-musical-1.png");
+    }
+    #musical:hover{
+      background-image: url("images/btns/btn-musical-2.png");
+    }
+    
+    #sports{
+      grid-area: sports;
+      background-image: url("images/btns/btn-sports-1.png");
+    }
+    #sports:hover{
+      background-image: url("images/btns/btn-sports-2.png");
+    }
+     
+    
+/*
+        <!-- Biography
+         Musical
+         Sports 
+    -->
+*/
+    
+    
+    
+    
+    
+    /*
+        action 
+        animation 
+        comedy
+        drama
+        family
+        horror
+        systery
+        somance
+        scifi
+    
+    */
+    
+  </style>
+</head>
+
+
+<body>
+  <!-- Wrapper and banner -->
+  <div id="wrapper">
+    <div id="banner"></div>
+    
+  <!-- Buttons -->
+    <div id="action" class="genre-btn" onclick="logVote('action')"></div>
+    
+    <div id="animation" class="genre-btn" onclick="logVote('animation')"></div>
+    
+    <div id="comedy" class="genre-btn" onclick="logVote('comedy')"></div>
+    
+    <div id="drama" class="genre-btn" onclick="logVote('drama')"></div>
+    
+    <div id="family" class="genre-btn" onclick="logVote('family')"></div>
+    
+    <div id="horror" class="genre-btn" onclick="logVote('horror')"></div>
+    
+    <div id="mystery" class="genre-btn" onclick="logVote('mystery')"></div>
+    
+    <div id="romance" class="genre-btn" onclick="logVote('romance')"></div>
+    
+    <div id="scifi" class="genre-btn" onclick="logVote('scifi')"></div>
+        
+    <div id="biography" class="genre-btn" onclick="logVote('biography')"></div>
+    
+    <div id="musical" class="genre-btn" onclick="logVote('musical')"></div>
+    
+    <div id="sports" class="genre-btn" onclick="logVote('sports')"></div>
+  
+  <!-- Aside with voting results -->
+  <aside>
+  
+    <div>
+      <h2 id="totalVotesOutput">Total Votes</h2>
+    </div>
+  
+    <div>
+      <h4>Action</h4>
+      <p id="action-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="action-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Animaton</h4>
+      <p id="animation-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="animation-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Biography</h4>
+      <p id="biography-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="biography-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Comedy</h4>
+      <p id="comedy-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="comedy-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Drama</h4>
+      <p id="drama-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="drama-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Family</h4>
+      <p id="family-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="family-bar"></div>
+
+    </div>
+    
+    <div>
+      <h4>Horror</h4>
+      <p id="horror-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="horror-bar"></div>
+
+    </div>
+    
+    <div>
+      <h4>Musical</h4>
+      <p id="musical-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="musical-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Mystery</h4>
+      <p id="mystery-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="mystery-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Romance</h4>
+      <p id="romance-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="romance-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Sci-Fi</h4>
+      <p id="scifi-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="scifi-bar"></div>
+    </div>
+    
+    <div>
+      <h4>Sports</h4>
+      <p id="sports-votes">0 votes &nbsp; 0.00%</p>
+      <div class="vote-bar" id="sports-bar"></div>
+    </div>
+    
+    
+    <!-- Biography
+         Musical
+         Sports 
+    -->
+
+  </aside>
+
+  
+  </div>
+  <script>
+    
+    var totalVotes = 0;
+
+//    var actionVotes, animationVotes = 0;
+
+    /*Steps:
+
+      
+      Action
+      Animation
+      Comedy
+      Drama
+      Family
+      Horror
+      Mystery
+      Romance
+      Scifi
+      Biography
+      Musical
+      Sports
+      
+      
+      Steps for new buttons:
+        1 - Create HTML Button,
+        2 - bar in aside, 
+        3 - CSS for button, 
+        4 - update grid templates - Use a period '.' for empty cells
+        
+      Javascript:
+        1 - Define variables(votes, bar, output)
+        2 - Define function for genreVote()
+        3 - Update refreshAll
+        4 - Update logVote
+        
+      Adventure
+      Classics
+      Thriller
+      
+      */
+
+    /**
+	 * Step 1 - Define variables(votes, bar, output)
+     */  
+      
+    var genresArr = ["action", "animation", "comedy", "drama", "family", "horror", "mystery", "romance", "scifi", "biography", "musical", "sports"];
+    
+    
+    // replace genre Votes variables with Vote Counts Aray;
+//    var actionVotes = 0; 
+//    var animationVotes = 0;
+//    var comedyVotes = 0;
+//    var dramaVotes = 0;
+//    var familyVotes = 0;
+//    var horrorVotes = 0;
+//    var mysteryVotes = 0;
+//    var romanceVotes = 0;
+//    var scifiVotes = 0;
+//    var biographyVotes = 0;
+//    var musicalVotes = 0;
+//    var sportsVotes = 0;
+      
+      var voteCounts = [];
+      for (let i = 0; i< genreArr.length; i++) {
+         voteCounts.push(0);    
+      }
+        
+//    var actionBar = document.getElementById("action-bar");
+//    var animationBar = document.getElementById("animation-bar");
+//    var comedyBar = document.getElementById("comedy-bar");
+//    var dramaBar = document.getElementById("drama-bar");
+//    var familyBar = document.getElementById("family-bar");
+//    var horrorBar = document.getElementById("horror-bar")
+//    var mysteryBar = document.getElementById("mystery-bar");
+//    var romanceBar = document.getElementById("romance-bar");
+//    var scifiBar = document.getElementById("scifi-bar");
+//    var biographyBar = document.getElementById("biography-bar");
+//    var musicalBar = document.getElementById("musical-bar");
+//    var sportsBar = document.getElementById("sports-bar");
+    
+      
+    
+    
+//    var actionOutput = document.getElementById("action-votes");
+//    var animationOutput = document.getElementById("animation-votes");
+//    var comedyOutput = document.getElementById("comedy-votes");
+//    var dramaOutput = document.getElementById("drama-votes");
+//    var familyOutput = document.getElementById("family-votes");
+//    var horrorOutput = document.getElementById("horror-votes");
+//    var mysteryOutput = document.getElementById("mystery-votes");
+//    var romanceOutput = document.getElementById("romance-votes");
+//    var scifiOutput = document.getElementById("scifi-votes");
+//    var biographyOutput = document.getElementById("biography-votes");
+//    var musicalOutput = document.getElementById("musical-votes");
+//    var sportsOutput = document.getElementById("sports-votes");
+//    var Output = document.getElementById("-votes");
+    //End variables
+	/**
+	 * End Step 1
+	 */
+    
+    
+    
+	/**
+	 * Step 2 - Define function for genreVote(), one for each genre
+	 */
+    //Begin vote functions
+//    function actionVote(){
+//	  // increment the toal votes for the Action genre.
+//      actionVotes++;
+//	  // increase the size of the progress bar for the Action genre.
+//      actionBar.style.width = actionVotes * 4 + "px";
+//	  // update all genres, since each vote changes the percent of all genres.
+//      refreshAllOutput();
+//    }
+//    function animationVote(){
+//      animationVotes++;
+//      animationBar.style.width = animationVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function dramaVote(){
+//      dramaVotes++;
+//      dramaBar.style.width = dramaVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function comedyVote(){
+//      comedyVotes++;
+//      comedyBar.style.width = comedyVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function familyVote(){
+//      familyVotes++;
+//      familyBar.style.width = familyVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function horrorVote(){
+//      horrorVotes++;
+//      horrorBar.style.width = horrorVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function mysteryVote(){
+//      mysteryVotes++;
+//      mysteryBar.style.width = mysteryVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function romanceVote(){
+//      romanceVotes++;
+//      romanceBar.style.width = romanceVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function scifiVote(){
+//      scifiVotes++;
+//      scifiBar.style.width = scifiVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function biographyVote(){
+//      biographyVotes++;
+//      biographyBar.style.width = biographyVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function musicalVote(){
+//      musicalVotes++;
+//      musicalBar.style.width = musicalVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+//    
+//    function sportsVote(){
+//      sportsVotes++;
+//      sportsBar.style.width = sportsVotes * 4 + "px";
+//      refreshAllOutput();
+//    }
+    //end vote functions
+	/**
+	 * End Step 2
+	 */
+    
+    /*
+logVote steps:
+1 - Create logVote function
+2 - add if/else statements for each genre
+3 - call genreVote() for the genres
+4 - change onclicks in buttons to logVote('genre') such as                                   logVote('action')
+                                  logVote('animation')*/
+	/**
+	 * Entry point for application.
+	 * Receives name of genre as first paramenter.
+	 * Step 4 - change onclicks in buttons to logVote('genre') such as logVote('action')
+	 */
+    function logVote(genre){
+	  // increment total vote count
+      totalVotes++;
+      totalVotesOutput.innerHTML = `Total Votes: ${totalVotes}`;
+      
+		// check which genre got clicked, and log the vote to the
+		// variable that corresponds to the chosen genre.
+//      if(genre == "action"){
+//        actionVote();
+//      }else if(genre == "animation"){
+//        animationVote();
+//      }else if(genre == "comedy"){
+//        comedyVote();
+//      }else if(genre == "drama"){
+//        dramaVote();
+//      }else if(genre == "family"){
+//        familyVote();
+//      }else if(genre == "horror"){
+//        horrorVote();
+//      }else if(genre == "mystery"){
+//        mysteryVote();
+//      }else if(genre == "romance"){
+//        romanceVote();
+//      }else if(genre == "scifi"){
+//        scifiVote();
+//      }else if(genre == "biography"){
+//        biographyVote();
+//      }else if(genre == "musical"){
+//        musicalVote();
+//      }else if(genre == "sports"){
+//        sportsVote();
+//      }
+    }
+	/**
+	 * End Step 4
+	 */
+    
+
+    
+    
+    
+	/**
+	 * Step 3 - refreshAll
+	 */
+    function refreshAllOutput(){
+		// output the vote count, and the percent of votes for the Action genre.
+      actionOutput.innerHTML = `${actionVotes} &nbsp; &nbsp; ` + (actionVotes/totalVotes*100).toFixed(2) + "%";
+      
+      animationOutput.innerHTML = `${animationVotes} &nbsp; &nbsp; ` + (animationVotes/totalVotes*100).toFixed(2) + "%";
+      
+      comedyOutput.innerHTML = `${comedyVotes} &nbsp; &nbsp; ` + (comedyVotes/totalVotes*100).toFixed(2) + "%";
+      
+      dramaOutput.innerHTML = `${dramaVotes} &nbsp; &nbsp; ` + (dramaVotes/totalVotes*100).toFixed(2) + "%";
+      
+      familyOutput.innerHTML = `${familyVotes} &nbsp &nbsp; ` + (familyVotes/totalVotes*100).toFixed(2) + "%";
+      
+      horrorOutput.innerHTML = `${horrorVotes} &nbsp &nbsp; ` + (horrorVotes/totalVotes*100).toFixed(2) + "%";
+      
+      mysteryOutput.innerHTML = `${mysteryVotes} &nbsp &nbsp; ` + (mysteryVotes/totalVotes*100).toFixed(2) + "%";
+      
+      romanceOutput.innerHTML = `${romanceVotes} &nbsp &nbsp; ` + (romanceVotes/totalVotes*100).toFixed(2) + "%";
+      
+      scifiOutput.innerHTML = `${scifiVotes} &nbsp &nbsp; ` + (scifiVotes/totalVotes*100).toFixed(2) + "%";
+      
+      biographyOutput.innerHTML = `${biographyVotes} &nbsp &nbsp; ` + (biographyVotes/totalVotes*100).toFixed(2) + "%";
+      
+      musicalOutput.innerHTML = `${musicalVotes} &nbsp &nbsp; ` + (musicalVotes/totalVotes*100).toFixed(2) + "%";
+      
+      sportsOutput.innerHTML = `${sportsVotes} &nbsp &nbsp; ` + (sportsVotes/totalVotes*100).toFixed(2) + "%";
+    }
+	/**
+	 * End Step 3
+	 */
+    
+    
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     
+  <title>JS Form Validation HTML</title>
+    
+  <meta charset="UTF-8" />
+ 
+    <!--  <link href="" rel="" type="" /> -->
+     
+    <style>
+     
+        .boxy {
+            width: 600px;
+            margin: 24px auto;
+            padding: 24px;
+            background-color: #abc;
+            color: #123;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        
+        select, input {
+            display: block;
+            font-size: 1.25rem;
+            margin: 1.5rem;
+            width: 150px;
+        }
+     
+     </style>
+     
+  </head>
+    
+ <body>
+     
+     <div class="boxy">
+         
+      <form method="post" action="some-page.php" onsubmit="return validateForm()">
+      
+        <h1>Apartment Finder</h1>
+        <h2>Choose a Min and Max Rent</h2>
+          
+          
+        <label for="minRent">Min Rent</label>  
+        <select name="minRent" id="minRent">
+          <option value="1">Any</option>
+          <option value="1000">$1000</option>
+          <option value="1500">$1500</option>
+          <option value="2000">$2,000</option>
+          <option value="2500">$2,500</option>
+        </select>
+          
+        <label for="maxRent">Max Rent</label>  
+        <select name="maxRent" id="maxRent">
+          <option value="99999">Any</option>
+          <option value="1000">$1,000</option>
+          <option value="2000">$2,000</option>
+          <option value="3000">$3,000</option>
+          <option value="4000">$4,000</option>
+          <option value="5000">$5,000</option>
+        </select>
+         
+        <input type="submit" name="submit" id="submit" value="Search Apts" />  
+      </form>
+     
+     </div>
+     
+   <script type="text/javascript">
+     
+     function validateForm () {
+         var minRent = document.getElementById("minRent").value;
+         var maxRent = document.getElementById("maxRent").value;
+         if (minRent > maxRent) {
+            alert("Minimum Rent Must Be Less Than Maximum Rent!");
+             return false; // block data from leaving this page
+         }//end if
+     } // end function validateForm()
+       
+   </script>
+    
+ </body>
+    
+</html>

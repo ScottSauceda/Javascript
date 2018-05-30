@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator Converter</title>
+    <meta charset="UTF-8" />
+      
+    <style>
+     
+        body {
+            background-color: #123;
+            margin: 1rem;
+        }
+        
+        #fahr-cels-app {
+            width: 600px;
+            min-height: 450px;
+            background-color: #abc;
+            color: #456;
+            font-family: sans-serif;
+            padding: 10px;
+            margin: 20px auto;
+            border: 10px solid #456;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        input, button {
+            font-size: 2rem;
+            padding: 5px 10px;
+            background-color: orange;
+            color: antiquewhite;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    
+    </style>
+      
+  </head>
+  
+  <body>
+      
+    <div id="fahr-cels-app">
+        
+      <h2>Javascript Temperature Converter</h2>
+        
+      <h3>Enter Temperature to Convert:</h3>
+        
+      <input type="number" id="myTemp" style="width:50px"/>
+        
+      <button onclick ="convertTemp('FC')">    
+      Convert Fahrenheit to Celsius</button> &nbsp;
+        
+      <button onclick ="convertTemp('CF')">
+      Convert Celsius to Fahrenheit</button><br/><br/>
+        
+      <img src="../images/CelsiusAndFahrenheit.jpg"
+           style="width:50%; height:auto" />
+        
+      <h3 id="conversion">CONVERTED TEMP GOES HERE</h3>
+        
+    </div> <!-- end "fahr-cel-app" -->
+
+      
+    <script src="js/myScript.js">
+      
+    </script>
+      
+  </body>
+</html>

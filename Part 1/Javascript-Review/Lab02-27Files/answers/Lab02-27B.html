@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+<script>
+/* 1 - Use modulus and if statements to output true 
+if the parameter for the function is odd and false 
+if it is even.*/
+
+//     %
+var num = 50;
+//isOdd(num);
+
+
+function isOdd(numInput){
+  if(numInput % 2 != 0){
+    console.log("True");
+  }else{
+    console.log("False");
+  }    
+}
+
+/* 2 - Use modulus and if statements to check if 
+  a given year is a leap year. Leap years 
+  occur every 4th year, don’t occur every 100th 
+  year except if it’s also a 400th year. 
+Example leap years:
+1204, 1308, 2004, 1600, 32, 30204
+Not leap years:
+2013, 2007, 1900, 1800, 3037*/
+
+var areLeapYears =    [1204, 1308, 2004, 1600, 32, 30204, 2000, 1784, 1768];
+var areNotLeapYears = [2013, 2007, 1900, 1800, 3037, 1500, 1400, 67, 3083];
+var testData = 1200;
+//leapYearTest();
+//leapYearCheck(testData);
+
+function leapYearCheck(year){
+
+  if(year % 4 == 0){
+    if(year % 100 == 0){
+      if(year % 400 == 0){
+        console.log(`${year} IS a leap year.`);
+      }else{
+        console.log(`${year} is NOT a leap year.`);
+      }
+      
+    }else{
+      console.log(`${year} IS a leap year.`);
+    }
+  }else{
+    console.log(`${year} is NOT a leap year.`);
+  }
+  
+//  if(year % 400 == 0)
+//    print is a leap year
+//  else if year % 100 == 0
+//    print is not
+//  else if year % 4 == 0
+//    print is  
+//  else
+//    print not
+
+
+
+}
+
+function leapYearTest(){
+  console.log("Expected Leap years:");
+  for(var i = 0; i < areLeapYears.length; i++){
+    leapYearCheck(areLeapYears[i]);
+  }
+  console.log("Expected non-leap years:")
+  for(var i = 0; i < areNotLeapYears.length; i++){
+    leapYearCheck(areNotLeapYears[i]);
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3 - Use a for loop to calculate the 
+average of an array of integers. */
+var intAry = [5, 2, 7, 8, 3, 2] // sum = 27, avg = 4.5
+var sum = 0;
+//intAry[50] = 4;
+//console.log(intAry[45]);
+//console.log(intAry.length);
+
+//findAvg(intAry);
+
+function findAvg(aryInput){
+  for(var i = 0; i < aryInput.length; i++){
+    sum += aryInput[i];
+  }
+  
+  var avg = sum/aryInput.length;
+  console.log(`Sum is: ${sum}\nAverage is: ${avg}`);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 4 - Use a for loop to copy the contents 
+       of an array into a new array.*/
+var firstAry = ["Some", "Stuff", "my", "array!"];
+var copiedAry = [];
+//copyArray();
+function copyArray(){
+  for(var i = 0; i < firstAry.length; i++){
+    copiedAry.push(firstAry[i]);
+//    copiedAry[i] = firstAry[i];
+  }
+//  copiedAry = firstAry;
+
+  console.log(firstAry);
+  console.log(copiedAry);
+  
+  
+}
+
+
+
+
+/* 5 - Write a function that outputs the 
+       following grid into the console:
+	- - - - - - - - - -                                                           
+	- - - - - - - - - -                                                                                           
+	- - - - - - - - - -                                                                                           
+	- - - - - - - - - -                                                                                           */
+var width = 10;
+var height = 10;
+
+//printDashedGrid(width, height);
+  
+function printDashedGrid(inWidth, inHeight){
+  var outString = "";
+//Scalable version
+  for(var j = 0; j < inHeight; j++){
+  
+    for(var i = 0; i < inWidth; i++){
+      outString += "- ";
+    }
+    
+    outString += "\n";
+  }
+  
+// Non-Scalable version
+//    for(var i = 0; i < inWidth; i++){
+//      outString += "- ";
+//    }
+//    
+//    outString += "\n" + outString + "\n" + outString + "\n" + outString;
+  
+
+  console.log(outString);
+
+
+
+}
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

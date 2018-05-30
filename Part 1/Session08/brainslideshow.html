@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Bunny Slideshow</title>
+    <meta charset="utf-8">
+    
+  <style>  
+      
+      body {
+        background-color: #333;  
+      }
+
+      #slideshow {
+         width: 90%;
+         background-color: #555;
+         padding: 25px; 
+         height: 590px;
+         margin: 0 auto;
+         border-radius: 10px;
+         border: 3px solid #AAA;
+      }
+      
+      #bigPicDiv {
+        width: 70%;
+        background-color: #999;
+        padding: 2%; 
+        height: 540px;
+        float: left;
+        border-radius: 10px;
+        margin-right: 1%;
+        border: 3px solid #AAA;
+      }
+      
+      #thumbnailsDiv {
+        width: 19%;
+        background-color: #888;
+        padding: 2%; 
+        height: 540px;
+        float: right;
+        border-radius: 10px;
+        border: 3px solid #AAA;
+        overflow-y: scroll;
+        cursor: pointer;
+      }
+      
+      #thumbnailsDiv img {
+         width: 100%; 
+      }
+      
+      #thumbnailsDiv img:hover {
+         /* make it super-saturated when user mouses over thumb */
+         /* filter: saturate(3); */
+      }
+ 
+ </style>
+    
+    
+</head>
+
+<body>
+
+    <div id="slideshow"></div>
+    
+    <script>
+        
+        // get our one and only DOM element
+        var slideshow = document.getElementById("slideshow");
+        
+        // a button to toggle the slideshow autoplay
+        var autoplayBtn =  document.createElement('button');
+        autoplayBtn.innerHTML = "AUTOPLAY";
+        slideshow.appendChild(autoplayBtn);
+        autoplayBtn.style.backgroundColor = "aqua";
+        autoplayBtn.style.padding = "3px 40px";
+        autoplayBtn.style.fontSize = "1rem";
+        autoplayBtn.style.width = "150px";
+        autoplayBtn.addEventListener('click', startAutoplay);
+        
+        // dynamically make 2 divs: one for big pic, the other for thumbs
+        var bigPicDiv = document.createElement('div');
+        // assign ID so object can find CSS
+        bigPicDiv.id = "bigPicDiv";
+        // output bigPicDiv and thumbnailsDiv. Put 'em inside slideshow
+        slideshow.appendChild(bigPicDiv);
+
+        var thumbnailsDiv = document.createElement('div');
+        thumbnailsDiv.id = "thumbnailsDiv";
+        slideshow.appendChild(thumbnailsDiv);
+        
+        // grab the bigPic and thumbnails div boxes
+//        var bigPicDiv = document.getElementById("bigPicDiv");
+//        var thumbnailsDiv = document.getElementById("thumbnailsDiv");
+        
+        // the folder path
+        var folderPath = "images/bunny/";
+        
+        // an array to hold all the bunny pic file names
+        var picArr = ["bunny01.jpg", "bunny02.jpg", "bunny03.jpg", "bunny04.jpg", "bunny05.jpg", "bunny06.jpg", "bunny07.jpg", "bunny08.jpg", "bunny09.jpg", "bunny10.jpg", "bunny11.jpg", "bunny12.jpg", "bunny13.jpg"];
+        
+        // make bigPic and output it to bigPicDiv
+        var bigPic = new Image();
+        bigPic.src = "images/bunny/bunny01.jpg";
+        bigPicDiv.appendChild(bigPic);
+        
+        // make all thumbnail images using a for loop
+        for(let i = 0; i < picArr.length; i++) {
+            
+            // make a new image object
+            let myImg = new Image();
+            myImg.src = folderPath + picArr[i];
+            myImg.alt = picArr[i];
+            myImg.id = i; // matches the array index position
+            // make myImg clickable to call a function
+            myImg.addEventListener("click", swapPic);
+            myImg.addEventListener("mouseover", saturateThumb);
+            myImg.addEventListener("mouseout", restoreSaturation);
+            
+            // dynamic objects can be given custom properties
+            //myImg.id = i; // 0, 1, 2, 3 -- every pic is given its array index value as its id
+            // myImg.foo = "bar";
+            // put the myImg image into the bigPicDiv
+            thumbnailsDiv.appendChild(myImg);
+            
+        } // close for loop
+        
+        // appendChild() method vs. .innerHTML property
+        var myImg2 = '<img src="images/bunny/bunny10.jpg" id="bunny1">';
+        // bigPicDiv.innerHTML = myImg2;
+        
+        // function that gets called every time a thumbnail is clicked
+        function swapPic() {
+            //alert("Hello from Bunny Pic");
+            // apply to bigPic the src of event.target (clicked thumb)
+            bigPic.src = event.target.src;
+            // set the slideCounter to this position
+            slideCounter = event.target.id;
+        }
+        
+        // function is called when user mouses over a thumbnail
+        function saturateThumb() { 
+            // "this" and "event.target" are default arguments that provide the identity of the "thing" that called the functon
+            // "this" is always the "thing" that called the function
+            // "event" is always the event that called the function
+            // in this case, the event is MouseEvent
+            // "event.target" is the "thing" (thumb) that "did" event
+            // this.style.filter = "saturate(3)";
+            event.target.style.filter = "saturate(3)";
+        }
+        
+        function restoreSaturation() {
+            // this.style.filter = "saturate(1)";
+            event.target.style.filter = "saturate(1)";
+        }
+        
+        var slideCounter = 0;
+        // called by setInterval() method every X miliseconds
+        function autoplaySlideshow() {
+            // do something every X miliseconds
+            bigPic.src = folderPath + picArr[slideCounter];
+            // reset counter at the end so the slideshow loops
+            if(slideCounter < picArr.length-1) {
+                slideCounter++; // so we get next pic
+            } else {
+                slideCounter = 0; // restart slideshow
+            }
+        }
+        
+        // make the slideshow autoplay
+        // setInterval() method takes 2 arguments: function that is to run and the number of miliseconds between calls
+        function startAutoplay() {    
+            setInterval(autoplaySlideshow, 2000);
+            autoplayBtn.innerHTML = "STOP";
+        }
+        
+    </script>
+
+</body>
+
+</html>

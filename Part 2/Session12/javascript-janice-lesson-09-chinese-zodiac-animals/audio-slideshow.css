@@ -1,0 +1,55 @@
+@charset "UTF-8";
+body{
+	background-color: #333;
+}
+#container{
+	background-color: maroon;
+	width: 90%;
+	padding: 25px;
+	height: 570px;
+	margin: 0 auto;
+	border-radius: 50px;
+	border: 7px solid #EDC;
+}
+#bigPic{
+	background-color: #FFF;
+	width: 32%;
+	padding: 1%;
+	float: right;
+	min-height: 440px;
+	font-size: 2.5rem;
+	text-align: center;
+}
+#thumbs{
+	background-color: tan;
+	width: 61%;
+	padding: 1%;
+	min-height: 440px;
+	float: left;
+	background-image: url(../images/janice-w-bunny-600x261.png);
+	background-repeat: no-repeat;
+	background-position: bottom;
+	cursor: pointer;
+}
+
+img {
+	margin: 1%;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #555;
+	border: 2px solid brown;
+}
+#bigPic img {
+	border: none;
+	box-shadow: none;
+}
+h1, h2 {
+	color: #CCC;
+	font-family: sans-serif;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+ #bigPic, #thumbs{
+	border: 3px solid #aaa;
+	border-radius: 10px;
+}
+

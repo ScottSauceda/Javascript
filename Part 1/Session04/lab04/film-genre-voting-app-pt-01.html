@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     
+  <title>JS Film Genre Voting App</title>
+    
+  <meta charset="UTF-8" />
+ 
+  <link href="css/styles.css" rel="stylesheet" type="text/css" />
+     
+     
+  </head>
+    
+ <body>
+   
+    <!-- Wrapper and banner -->
+    <div id="wrapper">
+     
+      <div id="banner">
+          
+       </div>
+          
+         <!-- Buttons -->
+        
+        <div id="action" class="genre-btn" onclick="actionVote()"></div>
+        
+        <div id="animation" class="genre-btn" onclick="animationVote()"></div>
+        
+        <div id="comedy" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="drama" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="family" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="horror" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="mystery" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="romance" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="scifi" class="genre-btn" onclick="logVote()"></div>
+    
+        <div id="biography" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="musical" class="genre-btn" onclick="logVote()"></div>
+        
+        <div id="sports" class="genre-btn" onclick="logVote()"></div>
+        
+        <!--
+
+        Biography
+        Musical
+        Sports
+    -->
+     
+    <!-- Aside with voting results -->
+    <aside>
+        
+      <div>
+        <h2 id="totalVotesOutput">Total Votes</h2>  
+      </div>
+        
+      <div> 
+        <h4>Action</h4>
+        <p id="action-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="action-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Animation</h4>
+        <p id="animation-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="animation-bar"></div>
+      </div>
+     
+      <div>
+        <h4>Comedy</h4>
+        <p id="comedy-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="comedy-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Drama</h4>
+        <p id="drama-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="drama-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Family</h4>
+        <p id="family-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="family-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Horror</h4>
+        <p id="horror-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="horror-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Mystery</h4>
+        <p id="mystery-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="mystery-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Romance</h4>
+        <p id="romance-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="romance-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Sci-Fi</h4>
+        <p id="scifi-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="scifi-bar"></div>
+      </div>
+        
+      <div>
+        <h4>Biography</h4>
+        <p id="biography-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="biography-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Musical</h4>
+        <p id="musical-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="musical-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Sports</h4>
+        <p id="sports-votes">0 votes &nbsp; 0.00%</p>
+        <div class="vote-bar" id="sports-bar"></div>
+      </div>
+        
+    </aside>
+     
+     
+    </div> <!-- end #wrapper -->
+     
+
+   <script type="text/javascript">
+       
+       var totalVotes = 0;
+       
+       var actionVotes = 0;
+       
+       var animationVotes = 0;
+      
+     
+       
+       var actionBar = document.getElementById("action-bar");
+       
+       var animationBar = document.getElementById("animation-bar");
+       
+       var actionOutput = document.getElementById("action-votes");
+       
+       var animationOutput = document.getElementById("animation-votes");
+     
+      function actionVote(){
+          // alert("in action");
+          actionVotes++;
+          //alert(actionVotes);
+          actionBar.style.width = actionVotes * 4 + "px";
+          refreshAllOutput();
+      }
+       
+       function animationVote(){
+          // alert("in action");
+          animationVotes++;
+          //alert(actionVotes);
+          animationBar.style.width = animationVotes * 4 + "px";
+          refreshAllOutput();
+      }
+       
+      function animationVote() {
+          totalVotes++;
+          totalVotesOutput.innerHTML = `Total Votes: ${totalVotes}`;
+          
+          animationOutput.innerHTML = `${animationVotes} &nbsp; &nbsp; ` + (animationVotes/totalVotes*100).toFixed(2) + "%";
+      }
+       
+      function refreshAllOutput () {
+          totalVotes++;
+          totalVotesOutput.innerHTML = `Total Votes: ${totalVotes}`;
+          
+          actionOutput.innerHTML = `${actionVotes} &nbsp; &nbsp; ` + (actionVotes/totalVotes*100).toFixed(2) + "%";
+          
+      }
+    
+   </script>
+    
+ </body>
+    
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Obj Arr Loop Skillset</title>
+        
+        <style>
+            
+            body {
+                font-family: sans-serif;
+                color: white;
+                padding: 30px;
+            }
+        
+            .divvy {    
+                width: 500px; 
+                height: 250px; 
+                margin: 30px; 
+                background-color: cornflowerblue; 
+                font-size: 1.5em; 
+                font-family: sans-serif; 
+                padding: 50px; 
+                font-weight: bold; 
+                display: inline-block; 
+            }
+            
+            h2 {
+                background-color: orange;
+                padding: 20px;
+            }
+            
+            input[type="date"] {
+                display: block;
+                margin: 20px;
+                font-size: 1em;
+                cursor: pointer;
+            }
+        
+        </style>
+
+    </head>
+    
+    <body>
+        
+        <h2>Choose a Vacation</h2>
+        
+        <script>
+            
+            const places = [
+                
+                { place: 'Beach', country: 'Thailand', startDate: 'Choose', endDate: 'Choose', price: 2200, isTour: true, activities: ['frolicking', 'galavanting', 'hanging out', 'eating Thai food'] }, 
+                
+                { place: 'Cruise', country: 'Bahamas', startDate: 'Choose', endDate: 'Choose', price: 2500, isTour: true, activities: ['partying', 'shopping', 'sightseeing', 'snorkeling'] }, 
+                
+                { place: 'Casino', country: 'Vegas', startDate: 'Choose', endDate: 'Choose', price: 3500, isTour: false, activities: ['gambling', 'shopping', 'eating', 'going to shows'] }, 
+                
+                { place: 'Mountains', country: 'Nepal', startDate: 'Choose', endDate: 'Choose', price: 3200, isTour: false, activities: ['mountain climbing', 'hiking', 'visiting temples', 'shopping'] },
+                
+                { place: 'Stonehenge', country: 'England', startDate: 'Choose', endDate: 'Choose', price: 2800, isTour: false, activities: ['exploring', 'hiking', 'investigating mysteries', 'drinking'] },
+                
+                { place: 'Machu Pichu', country: 'Peru', startDate: 'Choose', endDate: 'Choose', price: 2700, isTour: true, activities: ['investigating mysteries', 'hiking the Incan Trail', 'visiting ruins', 'riding a llama', 'eating cuy'] } 
+
+            ];
+            
+            // a global variable to hold the confirmation message
+            var confirmMsg = "Please confirm your dates:<br/>";
+                                    
+            for(let i = 0; i < places.length; i++) {
+                
+                // make a div to hold the choice so that the user can vote
+                let divvy = document.createElement('div');
+                // make it clickable
+                divvy.innerHTML = places[i].place + '<br/>Start-End Dates:';
+                divvy.indx = i; // assign an id equal to the index position
+                divvy.className = 'divvy'; // assign a CSS class
+                document.body.appendChild(divvy); // output the div to the DOM
+                
+                // <input type="date" id="startDate">
+                
+                // make 2 date choosers and put them in the divvy div box
+                let startDateChooser = document.createElement('input');
+                startDateChooser.type = "date"; // assign input type
+                startDateChooser.indx = i;
+                // whenever the start date is changed, run setStartDate function
+                startDateChooser.addEventListener('change', setStartDate);
+                divvy.appendChild(startDateChooser);
+                
+                let endDateChooser = document.createElement('input');
+                endDateChooser.type = "date"; // assign input type
+                endDateChooser.indx = i;
+                // whenever the end date is changed, run setEndDate function
+                endDateChooser.addEventListener('change', setEndDate);
+                divvy.appendChild(endDateChooser);
+                
+            } // end for loop
+            
+            // runs when user chooses a start date
+            function setStartDate() {
+                let startDate = event.target.value;
+                confirmMsg += startDate + " - ";
+                divvy.innerHTML = confirmMsg;
+            } // function setStartDate
+            
+            // runs when user chooses an end date
+            function setEndDate() {
+                let endDate = event.target.value;
+                confirmMsg += endDate;
+                event.target.parentElement.innerHTML += confirmMsg;
+            } // function setEndDate
+            
+        </script>
+        
+    </body>
+    
+</html>

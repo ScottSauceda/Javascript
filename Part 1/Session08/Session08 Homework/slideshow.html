@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bunny Slideshow</title>
+
+  <meta charset = "UTF-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  
+
+  <style>
+  
+      body {
+          background-color: #123;
+      }
+      
+      #slideshow {
+/*          display: grid;*/
+          grid-template-columns: 1fr 1fr;
+            
+          background-color: #555;
+          width: 87%;
+          height: 97vh;
+          padding: 5px;
+          margin: 5px auto;
+          
+/*          grid-template-areas:*/
+            
+      }
+      
+      main { /* holds slideshow Big Pic */
+/*          grid-area: main;*/
+          background-color: #888;
+          height: 75vh;
+          padding: 5px;
+          overflow-y: hidden;
+          margin: 10px auto;
+          
+      }
+      
+      aside { /* holds slideshow Thumbs */
+/*          grid-area: aside;*/
+          background-color: #aaa;
+          height: 17vh;
+          margin: 10px auto;
+          padding: 5px;
+          overflow-y: scroll; /* so thumbs don't overhang container */
+    
+      }
+      
+      img {
+          width: auto; /* all images 100% width of parent */
+          height: 100%;
+          margin: 1%;
+      }
+      
+      @media and screen(min-width: 1000px) {
+          
+          #slideshow {
+              width: 97%;
+          }
+          
+          main {
+              width: 73%;
+              float: right;
+              margin: 1%;
+          }
+          
+          aside {
+              width: 23%;
+              float: left;
+              margin: 1%;
+          }
+          
+      } /* end @media query */
+      
+  </style>
+    
+</head>
+
+<body>
+  
+  <div id="slideshow">
+  
+    <main id ="bigPicDiv"> <!-- main image. click a thumb to change this image -->
+    
+    
+      
+    </main>                 <!-- end main -->
+    <aside id="thumbsDiv"> <!-- thumbnails. click to change the Main Pic -->
+      
+             
+      
+    </aside>                <!-- end aside -->
+      
+  </div>  <!-- end #slideshow -->
+    
+  <script src="js/myScript.js"></script>
+    
+</body>
+
+</html>

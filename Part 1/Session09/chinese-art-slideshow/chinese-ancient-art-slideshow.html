@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Chinese Ancient Art Slideshow</title>
+    <meta charset="utf-8">
+    
+  <style>  
+      
+      body {
+        background-color: #333;  
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      #slideshow {
+         min-width: 1250px;
+         background-color: #555;
+         padding: 25px; 
+         height: 670px;
+         margin: 0 auto;
+         border-radius: 10px;
+         border: 3px solid #AAA;
+      }
+      
+      header {
+          height: 25px;
+          padding: 0.5em auto 1em auto;
+          text-align: left;
+          font-size: 1.15rem;
+          color: #EEE;
+          font-weight: bold;
+      }
+      
+      #bigPicDiv {
+        width: 70%;
+        background-color: #999;
+        padding: 2%; 
+        height: 500px;
+        float: left;
+        border-radius: 10px;
+        margin-right: 1%;
+        margin-top: 0.5em;
+        margin-bottom: 1em; /* push down footer */
+        border: 3px solid #AAA;
+        overflow-y: scroll;
+      }
+      
+      #thumbnailsDiv {
+        width: 19%;
+        background-color: #888;
+        padding: 2%; 
+        height: 500px;
+        float: right;
+        border-radius: 10px;
+        border: 3px solid #AAA;
+        overflow-y: scroll;
+        cursor: pointer;
+      }
+      
+      #thumbnailsDiv img, #bigPicDiv img {
+         width: 100%; 
+      }
+      
+      #thumbnailsDiv img:hover {
+         /* make it super-saturated when user mouses over thumb */
+         /* filter: saturate(3); */
+      }
+      
+      footer {
+/*          clear: both;*/
+          height: 50px;
+          padding: 0.5em 3em;
+          text-align: left;
+          background-color: #EEE;
+          font-size: 1rem;
+          color: #222;
+          border-radius: 10px;
+          width: 75%;
+          float: left;
+      }
+      
+      button {
+          font-size: 1.5em;
+          padding: 0.5em;
+          float: right;
+          height: 65px;
+          width: 13%;
+          cursor: pointer;
+          border-radius: 10px;
+      }
+     
+ </style>
+    
+    
+</head>
+
+<body>
+
+    <div id="slideshow">
+        
+        <header>Timely Greeting</header>
+    
+        <div id="bigPicDiv"></div>
+        
+        <div id="thumbnailsDiv"></div>
+        
+        <footer></footer>
+        
+        <button id="autoplayBtn">AUTOPLAY</button>
+            
+    </div><!-- close slideshow -->
+    
+    <script src="js/chinese-ancient-art-slideshow.js"></script>
+    
+   <script src="js/Greeting.js"></script>
+    
+    <script>
+        
+        const header = document.querySelector('header')
+
+        const greeting = new Greeting()
+        const greetuser = greeting.greetUser('Marcus')
+        header.innerHTML = greetuser
+        window.setInterval(greet, 10000) // reresh every 10 sec
+        
+        function greet() {
+            let greetu = greeting.greetUser('Brian')
+            header.innerHTML = greetu
+        }
+
+    </script>
+
+</body>
+
+</html>

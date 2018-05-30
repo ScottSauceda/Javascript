@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <meta chasrset = "UTF-8" />
+      
+    <title>JS Final Exam Review</title>
+      
+  </head>
+    
+  <body>
+      
+      
+      
+    <script>
+        
+        
+//    1.) var fruits = ["Apple", "Peach", "Mango", "Banana", "Orange", "Pear", "Coconut", "Strawberry", "Blueberry"]
+//
+//Make pie out of our fruits array. Loop through the fruit array and if the fruit has 6 or less characters, add “-pie” to the end of the string and add it to a new pie array.
+    
+      var fruits = ["Apple", "Peach", "Mango", "Banana", "Orange", "Pear", "Coconut", "Strawberry", "Blueberry"];
+        
+      var pie = [];
+      
+      for(let i = 0; i < fruits.length; i++) {
+             if(fruits[i].length <= 6 ) {
+                pie.push(fruits[i] + "-pie");
+                
+          } // end if
+          
+      } // end for
+        
+        
+    console.log(fruits);
+        
+    console.log(pie);
+        
+//   2.)     Create a function to loop through all numbers from 1 to a given input number. If the counter is divisible by 3, print Fizz, and if the counter is divisible by 5, print Buzz. Otherwise, just print the counter. For example,
+//Buzz
+//11
+//Fizz
+//13
+//14
+//FizzBuzz
+
+        
+      function fizzBuzz() {
+          
+          for(let i = 0; i < 51; i++) {
+              
+             if (i % 3) {
+                 console.log("Fizz" + [i]);
+             } else if (i % 10) {
+                 console.log("Buzz" + [i]);
+             } // end if else
+              
+          } // end for
+          
+      } // end fizzBuzz()
+        
+     console.log(fizzBuzz);
+        
+        
+//2A.) What is a problem you may run in to when accepting an argument.
+        //If certain Numbers are divisible by both
+        
+        
+//3.)
+//“Zip” or weave two arrays together. Create this array:
+//[1, 2, 3, 4, 5, 6, 7, 8]
+//Using these two arrays:
+//[1, 3, 5, 7]
+//[2, 4, 6, 8]
+
+var arr1 = [1,3,5,7];
+var arr2 = [2,4,6,8];
+        
+var arr3 = arr1.concat(arr2);
+        
+arr3.sort();
+        
+console.log(arr3);
+        
+        
+
+//        Bonus:
+//Make it work when the arrays are not of equal size.
+        
+var arr4 = [1,3,5,7,9];
+        
+var arr5 = [2,4,6,8];
+        
+var arr6 = arr4.concat(arr5);
+        
+arr6.sort();
+        
+console.log(arr6);
+    
+        
+        
+//4.) Create a multiple choice quiz generator using the following HTML and JSON structure:
+        
+
+      
+        
+//4.a) Generate a file using the following JSON structure:
+//{question: String, pointValue: Number correctAnswer: String, option1: String, option2: String, option3: String, option4: String}
+
+//4.b) Use the following static HTML as the basis for our web page.
+//<body>
+//	<div id=“wrapper”>
+//		<div id=“questionBox”></div>
+//		<div id=“scoreBox”></div>
+//	</div>
+//</body>
+        
+        
+//4.c) Create an object to hold the correct answer and the point value for each question. Use this for grading the user’s answer later.
+      
+//4.d) Use a function for grading the user’s answers. The function should take two arguments: a question number and an answer number. Use the question number to lookup the correct answer in the object array created in the previous step
+        
+//4.e) For each quiz question, use the following template to generate the dynamic HTML using javascript:
+//<div id=“box#”> <!— Replace # with the number of the question—>
+//	<h3></h3> <!— Replace the innerHTML with the question String —>
+//	<ul> 
+//		<button></button> <!— Place the four options within these li’s innerHTML. Add an event listener to the grading function with the option number(1-4) and the question number —>
+//		<button></button>
+//		<button></button>
+//		<button></button>
+//	</ul>
+//</div>
+        
+    </script>
+    
+  </body>
+    
+</html>

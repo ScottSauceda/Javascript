@@ -1,0 +1,303 @@
+@charset "UTF-8";
+
+body {
+    background-color: #123;
+    font-family: sans-serif;
+    color: #153;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    grid-template-areas:
+      "banner"
+      "action"
+      "animation"
+      "comedy"
+      "biography"
+      "drama"
+      "family"
+      "horror"
+      "musical"
+      "mystery"  
+      "romance"   
+      "scifi"
+      "sports"
+      "aside";
+    
+    background-color: #600;
+    width: 95%;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 2rem;
+    overflow: auto;
+}
+
+.genre-btn {
+    width: 206px;
+    height: 259px;
+    margin: 5px auto;
+    padding: 0;
+    border-radius: 10px;
+    background-position: left;
+    background-size:cover;
+    cursor: pointer;
+    justify-self: center;
+}
+
+#banner {
+    grid-area: banner;
+    background-image: url("../images/popcorn-vote-logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 222px;
+}
+
+aside {
+    background-color: rgba(244, 222, 222, 0.1);
+    grid-area: aside;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    line-height: 24px;
+    color: #ecc;
+    
+    text-transform: uppercase;
+    padding: 5px;
+    font-size: 14px;
+    /* overflow-y: scroll; */
+    margin-top: 0.5rem;
+    border-radius: 7px;
+    border: 0px solid rgba(244, 244, 244, 0.8)
+    
+}
+
+aside div p {
+    display: inline;
+    font-size: 0.9rem;
+    color: yellow;
+    padding: 0;
+}
+
+.vote-bar {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 25px;
+    width: 5px;
+    background-color: rgba(244, 244, 11, 0.6);
+    box-shadow: 2px 2px 2px darkgreen;
+}
+
+
+aside div {
+    background-color: rgba(24, 222, 22, 0.2);
+    padding: 2px 0px 0px 10px;
+    border-bottom: 2px solid yellowgreen;
+    box-shadow: 2px 2px 2px darkolivegreen;
+}
+
+h4 {
+    display: inline-block;
+    padding: 2px;
+    width: 20%;
+}
+
+p {
+    display: inline-block;
+    padding: 2px;
+    margin-left: 10%;
+}
+
+
+
+#action {
+    grid-area: action;
+    background-image: url("../images/btns/btn-action-1.png");
+}
+
+#action:hover {
+    background-image: url("../images/btns/btn-action-2.png");
+}
+
+#animation {
+    grid-area: animation;
+    background-image: url("../images/btns/btn-animation-1.png");
+}
+
+#animation:hover {
+    background-image:url("../images/btns/btn-animation-2.png");
+}
+
+#comedy {
+    grid-area: comedy;
+    background-image: url("../images/btns/btn-comedy-1.png");
+}
+
+#comedy:hover {
+    background-image:url("../images/btns/btn-comedy-2.png");
+}
+
+#drama {
+    grid-area: drama;
+    background-image: url("../images/btns/btn-drama-1.png");
+}
+
+#drama:hover {
+    background-image:url("../images/btns/btn-drama-2.png");
+}
+
+#family {
+    grid-area: family;
+    background-image: url("../images/btns/btn-family-1.png");
+}
+
+#family:hover {
+    background-image:url("../images/btns/btn-family-2.png");
+}
+
+#horror {
+    grid-area: horror;
+    background-image: url("../images/btns/btn-horror-1.png");
+}
+
+#horror:hover {
+    background-image:url("../images/btns/btn-horror-2.png");
+}
+
+#mystery {
+    grid-area: mystery;
+    background-image: url("../images/btns/btn-mystery-1.png");
+}
+
+#mystery:hover {
+    background-image:url("../images/btns/btn-mystery-2.png");
+}
+
+#romance {
+    grid-area: romance;
+    background-image: url("../images/btns/btn-romance-1.png");
+}
+
+#romance:hover {
+    background-image:url("../images/btns/btn-romance-2.png");
+}
+
+#scifi {
+    grid-area: scifi;
+    background-image: url("../images/btns/btn-scifi-1.png");
+}
+
+#scifi:hover {
+    background-image:url("../images/btns/btn-scifi-2.png");
+}
+
+#biography {
+    grid-area: biography;
+    background-image: url("../images/btns/btn-biography-1.png");
+}
+
+#biography:hover {
+    background-image:url("../images/btns/btn-biography-2.png");
+}
+
+#musical {
+    grid-area: musical;
+    background-image: url("../images/btns/btn-musical-1.png");
+}
+
+#musical:hover {
+    background-image:url("../images/btns/btn-musical-2.png");
+}
+
+#sports {
+    grid-area: sports;
+    background-image: url("../images/btns/btn-sports-1.png");
+}
+
+#biography:hover {
+    background-image:url("../images/btns/btn-sports-2.png");
+}
+
+    /*
+
+        Action
+        Animation
+        Comedy
+        Drama
+        Family
+        Horror
+        Mystery
+        Romance
+        Sci-Fi
+    */
+
+@media (min-width: 500px) {
+    #wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "banner banner"
+    "action animation"
+    "biography comedy"
+    "drama family"
+    "horror musical"
+    "mystery romance"
+    "scifi sports"
+    "aside aside";
+  }
+    .genre-btn {
+        width: 185px; 
+        height: 235px;
+    }
+}
+
+@media (min-width: 800px) {
+    #wrapper {
+    grid-template-columns: 1fr 1fr 1fr 4fr;
+    grid-template-areas:
+    "banner banner banner aside"
+    "action animation biography aside"
+    "comedy drama family aside"
+    "horror musical mystery aside"
+    "romance scifi sports aside"
+    }
+    
+    .genre-btn {
+        width: 145px;
+        height: 180px;
+    }
+}
+
+@media (min-width: 1100px) {
+    #wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+        grid-template-areas:
+        "banner  banner banner banner aside"
+        "action  animation biography comedy aside"
+        "drama   family horror musical aside"
+        "mystery romance scifi sports aside"
+    }
+    
+    .genre-btn {
+        width: 120px;
+        height: 152px;
+    }
+}
+
+/*
+
+3 Media queries
+  min-width: 500px
+  2 column view in #wrapper 1fr 1fr
+  width: 185px; height 235px in .genre-btn
+
+ min with: 800px
+3 column view in #wrapper 1fr 1fr 1fr 4fr - Aside on right
+width: 145px, height: 180px in .genre-btn
+
+min-width: 1100px
+4 column view in #wrapper 1fr 1fr 1fr 1fr 3fr - Aside on right
+width: 120px, height: 152px in .genre-btn
+  
+
+*/

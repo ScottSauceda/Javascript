@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ </head>
+    
+ <body>
+     
+  <div id="box1" class="boxy">
+     
+    <h2> Choose your favorite fruit </h2>
+      
+    <select name="favoritefruit" id="favoritefruit" onchange="favefruit();">
+        
+      <option value="apple">apple</option>  
+        
+      <option value="banana">banana</option>
+        
+      <option value="cherry">Cherries</option>
+        
+      <option value="Grape">Grape</option>
+        
+      <option value="mango">mango</option>
+        
+      <option value="orange">orange</option>
+        
+      <option value="peach">peach</option>
+        
+      <option value="pear">pear</option>
+        
+    </select>
+      
+    <div id="faveoutput">
+      
+    </div>
+        
+  </div>     
+     
+     
+  <script>
+      
+      
+    // Creates an empty output string
+      var faveoutput = document.getElementById('faveoutput');
+        
+      
+      function favefruit () {
+          // Gets the currently selected fruit from the dropdown menu
+         var favoritefruit = document.getElementById('favoritefruit').value;
+          
+         // Creates an output message for the user  
+         var msg = ` ${favoritefruit} ! Excellent choice.` ;
+          
+          
+          // Create an image URL from the fruit name
+                var fruitpic = `<img src="images/${favoritefruit}.png">`;
+         
+        
+        // Output to the user        
+        faveoutput.innerHTML = fruitpic + msg;
+                
+          
+       }
+      
+        
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    var globalvar;
+      
+    function localscope() {
+    localvar = "Local Success!"
+      
+    }
+      
+    function globalscope() {
+    globalvar = "Global Success!"
+        
+    }
+      
+    /*
+     localscope();
+     
+     document.getElementById('box1').innerHTML = localvar;
+     
+     */
+     
+  </script>
+    
+    
+ </body>
+
+</html>

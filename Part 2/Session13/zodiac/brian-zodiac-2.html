@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chinese Zodiac Animals</title>
+
+<style>
+  
+   body {
+	  background-color: #333;  
+   }
+  
+  #app {
+	 width: 1250px;
+	 background-color: maroon;
+	 padding: 25px; 
+	 height: 800px;
+	 margin: 0 auto;
+	 border-radius: 10px;
+	 border: 3px solid #AAA;
+  }
+    
+  header {
+     color: white;
+     font-family: sans-serif;
+     text-align: center;
+     height: 110px;
+  }
+  
+  #thumbsDiv {
+    position: relative;
+	width: 750px;
+	background-color: #CBA;
+    background-image: url('images/janice-w-bunny-600x261.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+	padding: 25px; 
+	height: 540px;
+	float: left;
+	border-radius: 10px;
+	margin-right: 25px;
+	border: 3px solid #AAA;
+    cursor: pointer;
+  }
+  
+  #bigPicDiv {
+	width: 350px;
+	background-color: #FFF;
+	padding: 25px; 
+	height: 540px;
+	float: right;
+	border-radius: 10px;
+	border: 3px solid #AAA;
+    font-size: 2.25em;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bold;
+    color: #A00;
+  }
+  
+  img { /* this will style the little animal thumbs */
+        margin: 1%;
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #555;
+        border: 2px solid brown;
+  }
+    
+  #bigPicDiv img {
+	  border: none;
+	  box-shadow: none;
+      width: 100%;
+      height: auto;
+      margin-top: 100px; /* push down the wheel */
+  }
+    
+  #chinCharDiv { /* holds Chinese character */
+        position: absolute;
+        display: none;
+        background-color: white;
+        width: 235px;
+        height: 145px;
+        top: 410px;
+        left: 135px;
+        z-index: 1;
+  }
+    
+  footer {
+        clear: both;
+  }
+    
+  #scoreBox {
+       width: 300px;
+       height: 35px;
+       background-color: bisque;
+       font-family: sans-serif;
+       font-weight: bold;
+       padding: 15px;
+       float: left;
+       margin: 15px;
+  }
+    
+    button {
+        font-size: 1.25rem;
+        padding: 5px 15px;
+        width: 175px;
+        margin: 45px 25px 25px 25px; /* T R B L */
+    }
+    
+  </style>
+
+
+</head>
+
+  <body>
+
+    <div id="app">
+       
+       <header>
+             <h2>
+                 Learn the names of the 12 Animals of the Chinese Zodiac
+             </h2>
+             <h3>
+                 Pay close attention to the sounds, so that you can take the quiz later!
+             </h3>
+       </header>
+        
+        <div id="bigPicDiv"></div>
+        
+       <div id="thumbsDiv">
+           
+            <div id="chinCharDiv"></div>
+           
+        </div>
+        
+        <footer>
+            
+            <div id="scoreBox"></div>
+            <button id="btn">QUIZ ME</button>
+            
+        </footer>
+       
+    </div><!--close id="app"-->
+    
+    <script>
+        
+        const animals = [
+            { eng: "chicken", chi: "ji", pin: "ji&#772;", year: 2017 },
+            { eng: "cow", chi: "niu", pin: "niu&#769;", year: 2009 },
+            { eng: "dog", chi: "gou", pin: "gou&#780;", year: 2018 },
+            { eng: "dragon", chi: "long", pin: "lo&#769;ng", year: 2012 },
+            { eng: "goat", chi: "yang", pin: "ya&#769;ng", year: 2015 },
+            { eng: "horse", chi: "ma", pin: "ma&#780;", year: 2014 },
+            { eng: "monkey", chi: "hou", pin: "ho&#769;uzi", year: 2016 },
+            { eng: "pig", chi: "zhu", pin: "zhu&#772;", year: 2019 },
+            { eng: "rabbit", chi: "tu", pin: "tu&#768;zi", year: 2011 },
+            { eng: "rat", chi: "shu", pin: "la&#780;oshu&#780;", year: 2008 },
+            { eng: "snake", chi: "she", pin: "she&#769;", year: 2013 },
+            { eng: "tiger", chi: "hu", pin: "la&#780;ohu&#780;", year: 2010 }
+        ];
+        
+//        const mixto = ['cactus', 5, 3, 'corn', 6, 77, 9, true, ['top', 'truck'], 33, "hi"];
+//        const furniture = ['bed', 'sofa'];
+//        
+//        const uberArray = [animals, mixto, furniture];
+//        
+////        // using only uberArray, get the dragon
+//        const myDragon = uberArray[0][3].eng
+//        alert(myDragon);
+//        // via the uberArray, gimme the truck !
+//        const myToy = uberArray[1][8][1]
+//        alert(myToy);
+        
+        // a boolean to keep track of whether or not we are taking the quiz
+        var isQuizMode = false; // the on page load default is NOT taking quiz
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', toggleQuiz);
+        
+        // loop through the array, making 12 images
+        // the eng property supplies the file name: chicken.jpg, cow.jpg, etc
+        const bigPicDiv = document.getElementById('bigPicDiv');
+        const thumbsDiv = document.getElementById('thumbsDiv');
+        const chinCharDiv = document.getElementById('chinCharDiv');
+        
+        // put the zodiac wheel pic in the bigPicDiv on page load
+        const bigPic = new Image();
+        bigPic.src = "images/zodiac-animal-wheel.png";
+        bigPicDiv.appendChild(bigPic);
+        
+        function spinWheel() {
+            // rotate the wheel (the bigPic that appears on pg load)
+            bigPic.style.transform += "rotate(2deg)";
+        }
+        // call the spinWheel function repeatedly to animate the wheel
+        var wheelInterval = setInterval(spinWheel, 40);
+        
+        const sound = new Audio();
+        
+        for(let i = 0; i < animals.length; i++) {
+            
+            // make a new dynamic image
+            let thumbPic = new Image();
+            thumbPic.src = "images/" + animals[i].eng + ".jpg";
+            thumbPic.alt = "Chinese Zodiac Animal - Year of the " + animals[i].eng;
+            // custom properties
+            thumbPic.indx = i;
+            thumbPic.eng = animals[i].eng;
+            thumbPic.chi = animals[i].chi;
+            thumbPic.pin = animals[i].pin;
+            thumbPic.year = animals[i].year;
+            thumbPic.addEventListener('click', onAnimalClick);
+            thumbsDiv.appendChild(thumbPic);
+            
+        }
+        
+        // runs whenever any animal thumb is clicked, regardless of mode
+        function onAnimalClick() {
+            
+            if(isQuizMode) { // if we are in Quiz Mode
+                // animal thumb click was in response to random quiz sound
+                // compare the clicked animal to the random sound animal
+                // clicked animal matches random sound animal
+                if(animals[event.target].eng == animals[randNum].eng) { // if 5 == 5
+                   alert("Yay! You are correct!");
+                    // remove the correct animal answer from the array
+                    // so that the correct animal is not repeated
+                    animals.splice(randNum, 1); // remove from array
+                    
+                } else { // the clicked animal does not match the sound
+                   alert("Oops! Try again!");
+                   sound.play(); // repeat the sound
+                }
+                
+            } else { // we are NOT taking the quiz, so gimme bilingual
+                swapAnimal();
+            }
+            
+        }
+        
+        function swapAnimal() { // runs on thumb (animal) click
+            // wheel out, animal in, so move bigPic up
+            bigPic.style.marginTop = "0px";
+            // empty out the bigPicDiv every time to start
+            bigPicDiv.innerHTML = "";
+            
+            // 1.) replace bigPic with this animal
+            // event.target.year is the animal that was clicked to call func; event.target is also known as simply "this" this.eng
+            bigPic.src = `images/${event.target.eng}.jpg`;
+            // clear the interval so that the animal isn't spinning
+            clearInterval(wheelInterval);
+            // reset rotation to zero so that animal pic isn't crooked
+            bigPic.style.transform = "rotate(0deg)";
+            
+            // reoutput the bibPic into the bigPicDiv which was emptied
+            bigPicDiv.appendChild(bigPic);
+            
+            // 2.) output the English and Pinyin under the animal image
+            bigPicDiv.innerHTML += `${event.target.eng} - ${event.target.pin}`;
+            
+            // 3.) play the bilingual sound to teach Chinese animals
+            sound.src = `audio/${event.target.eng}.mp3`;
+            sound.play();
+            
+            // 4.) output the Chinese character into the AP div, so that it looks like she is saying the character
+            chinCharDiv.style.backgroundImage = "url(images/char-" + event.target.chi + ".jpg)";
+            chinCharDiv.style.backgroundRepeat = "no-repeat";
+            chinCharDiv.style.backgroundPosition = "center";
+            chinCharDiv.style.backgroundSize = "contain";
+            chinCharDiv.style.display = "block";
+            
+            // 5.) Output the year under the English - Pinyin
+            bigPicDiv.innerHTML += '<p style="font-size:0.6em">' + listYears(event.target.year) + "</p>";
+            
+        } // function swapAnimal()
+        
+        function listYears(yr) {
+            
+            let listOfYears = ""; // 1976, 1988, 2000, 2012, 2024, 2036
+            let startYear = yr - 180;
+            let endYear = yr + 60;
+
+            for(let i = startYear; i < endYear; i+=12) { 
+                
+                listOfYears += i + " ";
+
+            }
+
+            return listOfYears;
+        }
+        
+        var randNum = 0; // to hold the random sound during quiz
+        
+        function toggleQuiz() {
+                        
+            // if user clicked QUIZ ME
+            if(!isQuizMode) { // shorthand for isQuizMode==false
+                //isQuizMode = true;
+                btn.innerHTML = "STOP QUIZ";
+                
+                // generate a random integer from 0-11
+                randNum = Math.floor(Math.random() * 12);
+                sound.src = `audio/${animals[randNum].chi}.mp3`;
+                sound.play();
+                
+            } else { // if user clicked "STOP QUIZ"
+                //isQuizMode = false;
+                btn.innerHTML = "QUIZ ME";
+            }
+            
+            isQuizMode = !isQuizMode; // shorthand
+    
+        }
+
+	</script>
+     
+  </body>
+  
+</html>

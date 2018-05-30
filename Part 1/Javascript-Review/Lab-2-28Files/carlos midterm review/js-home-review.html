@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JS Midterm Skills Checklist Home</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+  </head>
+  <body>
+    <h1>HTML Elements That Work With Javascript</h1>
+      
+    <p>Write a button, an image, and a div element that when clicked, calls a function.</p>
+    
+    <!-- button -->
+    <button id="myBtn" onclick="someFunction()">Click Me</button>
+      
+    <!-- image -->
+    <img src="bunny01.jpg" alt="" onclick="someFunction()" />
+      
+    <!-- div -->
+    <div id="mydiv" onclick="someFunction()">Click Me</div>
+      
+     <p>Write a select element, and a color input element that calls a function when the input value changes</p>
+      
+      <select name="dropdownMenu" onchange="someFunction()">
+        <option value="option1">Option1</option>
+        <option value="option1">Option1</option>
+        <option value="option1">Option1</option>
+      </select>
+      
+      <input type="color" name="myColor" onchange="someFunction()" />
+      
+      <h1>Elements That Recieve Output From Javascript</h1>
+      
+      <p>Write a div, a p, and an h3 tag, each with unique ID's, with the text "JS Output Here" as the element content.</p>
+      
+      <div id="div1">JS Output Here</div>
+      
+      <p id="para1">Js Output Here</p>
+      
+      <h3 id="myH3">Js Output Here</h3>
+      
+      <script>
+      
+        // Create a function called greetUser that does nothing, it only contains a comment.
+          
+          function greetUser() {
+              // js comment
+          } // end greetUser()
+          
+          // replace the comment with an alert of "hello world"
+          
+          function greetUser() {
+              alert("Hello World");
+          } // end greetUser()
+          
+          // instead of the alert, put "Hello World" to an h3 with id "myH3".
+          
+          function greetUser() {
+              document.getElementById("myH3").innerHTML = "Hello World";
+          } // end greetUser()
+          
+          // Personalize the greeting by using the user's first name from an input that has an id of "firstName". Greeting should read "Hello {First_Name}".
+          
+          function greetUser() {
+            var userName = document.getElementById("firstName").value;
+            
+            var greeting = "Hello " + userName;
+              
+            document.getElementById("myH3").innerHTML = greeting;
+              
+          } // end greetUser()
+          
+          // add the current time to the previous greeting. Greeting should read "Hello {First_Name}. The time is HH:MM.
+          
+            function greetUser() {
+            var userName = document.getElementById("firstName").value;
+                
+            var currentTime = new Date();
+                
+            var hours = currentTime.getHours();
+                
+            if (hours < 10) {
+               hours = "0" + hours;
+            }
+                
+            var minutes = currentTime.getMinutes();
+                
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            
+            var greeting = "Hello " + userName + " the time is " + hours + ":" + minutes;
+                
+            // ES6 Version `Hello ${firstName}. The time is ${hours}:${minutes}.`
+              
+            document.getElementById("myH3").innerHTML = greeting;
+              
+          } // end greetUser()
+          
+          // Make the greeting even more timely. Change Hello to Good Morning, Good Afternoon, or Good Evening, depending on the current time.
+          
+          function greetUser() {
+            var userName = document.getElementById("firstName").value;
+                
+            var currentTime = new Date();
+                
+            var hours = currentTime.getHours();
+                
+            if (hours < 10) {
+               hours = "0" + hours;
+            }
+                
+            var minutes = currentTime.getMinutes();
+                
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+              
+            var timelyGreeting = "";
+              
+            if (hours < 12) {
+                greeting = "Good Morning";
+            } else if (hours < 17) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+            
+            var greeting = timelyGreeting " " + userName + ". The time is " + hours + ":" + minutes;
+                
+            // ES6 Version `${timelyGreeting} ${firstName}. The time is ${hours}:${minutes}.`
+              
+            document.getElementById("myH3").innerHTML = greeting;
+              
+          } 
+          
+      </script>
+      
+  </body>  
+</html>

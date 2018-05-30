@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    
+    <title>JS Fahrenheit Celsius Converter</title>
+    
+    <style>
+        
+        body {
+            background-color: #123;
+            margin: 1rem;
+        }
+    
+        .boxy {
+            width: 600px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #ABC;
+            color: #456;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 10px solid #456;
+            text-align: center;
+        }
+     
+        input, button {
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 1rem;
+            cursor: pointer;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="boxy">
+        
+        <h2>JS Fahrenheit Celsius Converter</h2>
+        
+        <h3 style="display:inline-block"> 
+            Enter Temperature to convert:</h3>
+        
+        <input type="number" id="myTemp">
+
+        <button onclick="convertTemperature('FC')">
+            Convert Fahrenheit to Celsius
+        </button>
+        
+        <button onclick="convertTemperature('CF')">
+            Convert Celsius to Fahrenheit 
+        </button>
+        
+        <img src="images/CelsiusAndFahrenheit.jpg">
+        
+        <h2 id="conversion" style="border:1px solid #999; 
+                                   padding:5px; color:#555">
+            CONVERTED TEMPERATURE HERE</h2>
+        
+    </div>
+    
+    <script>
+
+		// parameter t indicates the type of conversion
+		// 'FC' for fahrenheit to celsius
+		// 'CF' for celsius to fahrenheit
+		function convertTemperature(t) {
+			var myTemp = document.getElementById('myTemp').value;
+			myTemp = Number(myTemp);
+			var conversion = document.getElementById('conversion');
+			var convertedTemp = 0;
+			var outputStr = '';
+			var from = t.charAt(0);
+			var to = t.charAt(1);
+
+			if (t == 'FC') {
+				// fahrenheit to celsius conversion
+				convertedTemp = (myTemp - 32) * 5 / 9;
+			}
+			else if (t == 'CF') {
+				convertedTemp = myTemp * 9/5 + 32;
+			}
+			convertedTemp = convertedTemp.toFixed(2);
+			outputStr = `${myTemp}&deg; ${from} = ${convertedTemp}&deg; ${to}`;
+			conversion.innerHTML = outputStr;
+		}
+
+        // ###***### JS Fahrenheit Celsius Converter ###***###
+        
+
+    </script>
+    
+</body>
+    
+</html>
+
+
+
+

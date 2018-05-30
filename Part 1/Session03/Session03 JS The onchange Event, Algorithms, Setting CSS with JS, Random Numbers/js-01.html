@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+  <style>
+  
+      .boxy {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: coral;
+          color: #ff5;
+          height: 25vh;
+          font: bold 18px sans-serif;
+          margin: 10px;
+          padding: 10px;
+      }
+    
+      
+  </style>
+      
+  </head>
+    
+  <body>
+      
+  <div class="boxy" id="box1">JS output here</div>
+      
+  <div class="boxy" id="box2">
+  
+    <input type="text" name="firstName" id="firstName" placeholder="First Name">
+      
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+      
+    <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+      
+  </div>
+      
+  <div class="boxy" id="box3">Numeric Input Here</div>
+      
+  <div class="boxy" id="box4">
+  
+        <h2>Choose your Favorite Fruit</h2>
+        <select name="faveFruit" id="faveFruit" onchange="faveFruit()">
+          <option value="Apples">Apple</option>
+          <option value="Banana">Banana</option>
+          <option value="Cherry">Cherry</option>
+          <option value="Grape">Grape</option>
+        </select>
+
+  </div>
+      
+  <div id="faveOutput" class="boxy"></div>
+      
+    <script src="js/scripts.js"></script>
+    
+  </body>
+    
+</html>

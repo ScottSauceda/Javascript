@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    
+    <title>JS Loops and Arrays</title>
+    
+    <style>
+        
+        body {
+            background-color: #123;
+            margin: 1rem;
+        }
+    
+        .boxy {
+            width: 600px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #ABC;
+            color: #456;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 10px solid #456;
+            text-align: center;
+        }
+     
+        input, button {
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 1rem;
+            cursor: pointer;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="boxy">
+        
+        <h2>JS Loops and Arrays</h2>
+        
+        
+        
+        <h2 id="loopy" class="foo-bar" style="border:1px solid #999; 
+                                   padding:5px; color:#555">
+            Loop Output Here: </h2>
+        
+    </div>
+    
+    <script>
+
+        var loopy = document.getElementById("loopy");
+//        var loopy = document.querySelector('.loopy');
+        // get all elements of the same tag name
+        
+//        var myH2s = document.getElementsByTagName('h2');
+//
+//        // pass these alements to an array
+//        var myH2Arr = Array.from(myH2s);
+//        
+//        // use dot-syntax to access properties of eac harray element
+//        var my2ndID = myH2Arr[1].style.border;
+// //       alert(my2ndID);
+        
+        // ###***### JS Loops and Arrays ###***###
+        for(var i=0; i < 10; i++ ) {
+            /* code to run if loop condition is ture */
+            loopy.innerHTML += i + " ";
+        }
+//        alert("i: " + i);
+        //alert(i);
+
+        for (var j = 5; j <= 25; j+=5) {
+            loopy.innerHTML += j + " ";
+        }
+//        alert("j: " + i);
+        
+        for(var n = 0; n > -5; n--) {
+            loopy.innerHTML += n + " ";
+        }
+//        alert("n: " + i);
+        
+        // Beware Infinite Loops !!
+        // if condition is always true, loop never ends
+//        for(var m = 0; m > -5; m++) {
+//            loopy.innerHTML += m + " ";
+//        }
+        
+        
+        loopy.innerHTML = ""; // clear out loopy
+        // var vs. let
+        for(var r = 0; r <= 5; r++) {
+            loopy.innerHTML += r;
+            // r++ is the last thing the loop does before re-run
+        }
+            
+//        alert(r);
+            
+        loopy.innerHTML += "<br/> And now for 'let' version: ";   
+            
+        for(let t = 0; t <=5; t++) {
+            loopy.innerHTML += t;
+        }
+//        alert(t);
+        
+        // Arrays are variables that can store more than one value at a time
+        
+        var petsArr = ["Cat", "Dog", "Rabbit"];
+        
+        var fruitArr = ["Apple", "Banana", "Cherry", "Watermelon", "Kiwi", "Lemon", "Blueberry", "Peach", "Pear", "Papaya", "Plum", "Pineapple", "Apricot", "Mango"];
+   
+        // an array to hold the "short fruits"(fivec letter max) ex: Apple, Kiwi
+        var shortFruitsArr = [];
+        
+        // a triple play combo of arrays, loops and if logic: put the short word fruits into the shortFruitsArr
+        for(let i = 0; i < fruitArr.length; i++) {
+            
+            //check the lenght of each item in fruitArr
+            // if length <= 5, add the "short fruit" to shortFruitsArr
+            
+            if(fruitArr[i].length <= 5) {
+                shortFruitsArr.push(fruitArr[i]);
+            }
+            
+        }
+        alert("shortFruitsArr: " + shortFruitsArr);
+        
+        // put all the fruits that begin with A, B or C in a new ABCFruitsArr
+        
+        var ABCFruitsArr = [];
+        
+        for(let i = 0; i <fruitArr.length; i++) {
+            
+            let firstChar = fruitArr[i].charAt(0);
+            
+            // is firstChar less than D;
+            if(firstChar < 'D') { // if first letter of fruit is A, B or C
+                ABCFruitsArr.push(fruitArr[i]);
+            }
+            
+        }
+        ABCFruitsArr.sort();
+        alert("ABCFruitsArr: " + ABCFruitsArr);
+        
+        
+        // splice(x, y) starts at x position (index) and removes y items
+        fruitArr.splice(3, 3); // remove Watermelon. Kiwi, and Lemom
+        
+        // use push() add a new fruit at the end of the array
+          fruitArr.push("Lime");
+          fruitArr.push("Strawberry");
+          fruitArr.push("Rasoberry");
+        
+        // use pop() to remove the last item from the array
+        fruitArr.pop();
+        
+        // use unshift() to add element to beginning of the array
+        fruitArr.unshift("Coconut");
+        fruitArr.unshift("Blackberry");
+        
+        // use shift() to remove the last item from the array
+        fruitArr.shift();
+        
+        
+        
+         fruitArr.sort(); // alphabetize
+
+         fruitArr.reverse(); // reverse order
+//       alert(fruitArr); // alphabetized
+//          
+//        alert(fruitArr[3]);
+//        
+//        alert(fruitArr[fruitArr.length-1]);
+        
+        // Making a ul list from array items
+        
+//        var fruitList = '<ul style="text-align:left">';
+//        fruitList += '<li>' + fruitArr[0] + '</li>'
+//        fruitList += '<li>' + fruitArr[1] + '</li>'
+//        fruitList += '<li>' + fruitArr[2] + '</li>'
+//        fruitList += '<li>' + fruitArr[3] + '</li>'
+//        fruitList += '<li>' + fruitArr[fruitArr.length-1] + '</li>'
+//        fruitList += '</ul>'
+        
+        //loopy.innerHTML = fruitList;
+        var fruitList = '<ul style="text-align:left">';
+        
+        for(let f = 0; f < fruitArr.length; f++) {
+            
+            fruitList += '<li>' + fruitArr[f] + '</li>';
+            
+        }
+        
+        fruitList += '</ul>';
+        loopy.innerHTML = fruitList;
+        
+        
+        // make another fruit list using select and
+        
+        var fruitSelect = '<select>';
+        
+        for(let a = 0; a < fruitArr.length; a++) {
+            fruitSelect += '<option>' + fruitArr[a] + '</option>';
+        }
+        
+        fruitSelect += '</select>';
+        loopy.innerHTML += fruitSelect;
+        
+    </script>
+    
+</body>
+    
+</html>
+
+
+
+

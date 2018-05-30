@@ -1,0 +1,1 @@
+alert("Chinese Zodiac Animal Quiz Game");

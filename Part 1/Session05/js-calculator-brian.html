@@ -1,0 +1,176 @@
+<!DOCTYPE>
+<html en="lang">
+
+<head>
+    
+    <title>JS Calculator</title>
+    
+    <style>
+        
+        body {
+            background-color: #123;
+            margin: 2rem;
+        }
+    
+        .boxy {
+            width: 300px;
+            height: 450px;
+            margin: 24px auto;
+            padding: 24px;
+            background-color: #ABC;
+            color: #123;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 5px solid #88A;
+            text-align: center;
+        }
+        
+        #numBox {
+            font-size: 1.5rem;
+            background-color: lightyellow;
+            border: 3px solid orange;
+            color: darkorange;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 auto;
+            width: 250px;
+        }
+        
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            font-weight: bold;
+            font-size: 2rem;
+            margin: 1rem;
+            box-shadow: 5px 5px 5px #888;
+            cursor: pointer;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="boxy">
+        
+        <h2>Javascript Calculator</h2>
+    
+        <input type="number" id="numBox">
+
+        <!-- buttons for the operator -->
+        <button onclick="operate('+')">+</button>
+        <button onclick="operate('-')">-</button>
+        <button onclick="operate('*')">*</button>
+        <button onclick="operate('/')">/</button>
+        <button onclick="operate('**')">^</button>
+        <button onclick="operate('%')">M</button>
+        
+        <!-- buttons for the = and Clr -->
+        <button onclick="calculate()">=</button>
+        <button onclick="clearAll()">C</button>
+        
+        <h2 id="ansBox" style="border:1px solid #999; padding:5px; color:#555">ANSWER</h2>
+        
+    </div>
+    
+<script>
+    
+    // Global Vars
+    //Refer to Js Book PGS 37-39
+    
+    var num1 = 0; // the first number 
+    var num2 = 0; // the second number
+    var result = 0; // to store the caluclated result
+    var oper = ""; // the operator: +, -, *, /, ^, %
+    
+    // a Boolean to keep track of whether or not operate(op) func has run
+    // if func has NOT run, it is premature to click =, so disable = sign
+    var isOper = false; // use has not yet clicked operator (op) button
+    
+    // grab the input (numBox) and output (ansBox) boxes
+    var numBox = document.getElementById("numBox");
+    var ansBox = document.getElementById("ansBox");
+    
+    // give the numBox focus (get cursor blinking in box)
+    numBox.focus();
+    
+    //runs when user clicks any one of 6 math operators (+,-,*, etc)
+    function operate(op) { // op paremeter tells us which operator
+
+        isOper = true; // user has clicked an operator button
+        oper = op; // save the operator (op)
+        num1 = numBox.value; // save the 1st number
+        num1 = Number(num1)//convert num1 from string to actual number
+        ansBox.innerHTML = num1 + " " + oper; //output what we have so far: 1st number followed by operator
+        numBox.focus(); // put cursor blinking in box again
+        //clear the 1st num out of the numBox to make way for the 2nd num
+        numBox.value = "";
+        
+    } // function operate(op)
+    
+    // runs when user clicks equals sign (=)
+    function calculate() {
+        
+        if(isOper == true) {
+        
+        num2 = numBox.value; // save the 2nd number
+        num2 = Number(num2); // convert num2 from string to actual number
+        
+        // Do the math!!
+        // var result = num1 + oper + num2; will not work
+        
+            
+//        if(oper == "+") { //user clicked the plus-operator (+)
+//            result = num1 + num2;
+//        } else if (oper == "-") { // user clicked the minus-operator
+//            result = num1 - num2;
+//        } else if (oper == "*") { // user clicked the multiply-operator
+//            result = num1 * num2; 
+//        } else if (oper == "/") { // user clicked the division-operator
+//            result = num1 / num2;
+//        } else if (oper == "**") { // user clicked the exponent-operator
+//            result = num1 ** num2;
+//        } else {       // user clicked the modulus-sign
+//            result = num1 % num2;       
+//        }
+            
+            //We will replace the entire if-else statment (13 Lines) with just one line of code! evel()
+        
+            result = eval(num1 + oper + num2);
+//            
+            // **##**##** ENTIRE IF-ELSE-IF-ELSE REPLACED w ONE LINE!! **##**##**
+                
+            // output the result to the answer box
+            ansBox.innerHTML = `${num1} ${oper} ${num2} = ${result}`;
+            // clear the numBox
+            numBox.value = "";
+            
+        } // end if(isOper)
+        
+    } // function calcualte()
+    
+    function clearAll() { // reset all vars to inital values & empty boxes
+        num1 = 0;
+        num2 = 0;
+        result = 0;
+        oper = "";
+        ansBox.innerHTML = "";
+        numBox.value = "";
+        numBox.focus();
+    }
+    
+    
+</script>
+    
+</body>
+    
+</html>
+
+
+
+

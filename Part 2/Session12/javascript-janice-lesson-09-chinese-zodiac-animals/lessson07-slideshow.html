@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS7 - Slideshow</title>
+
+<style>
+  
+   body {
+	  background-color: #333;  
+   }
+  
+  #slideshow {
+	 width: 90%;
+	 background-color: #555;
+	 padding: 25px; 
+	 height: 590px;
+	 margin: 0 auto;
+	 border-radius: 10px;
+	 border: 3px solid #AAA;
+  }
+  
+  #bigPic {
+	width: 70%;
+	background-color: #999;
+	padding: 2%; 
+	height: 540px;
+	float: left;
+	border-radius: 10px;
+	margin-right: 1%;
+	border: 3px solid #AAA;
+  }
+  
+  #thumbs {
+	width: 20%;
+	background-color: #888;
+	padding: 2%; 
+	height: 540px;
+	float: right;
+	border-radius: 10px;
+	border: 3px solid #AAA;
+	overflow-y: scroll;
+  }
+  
+  #colPick {
+	  color:beige; 
+	  margin-left:50px; 
+	  font-family:sans-serif; 
+	  padding:5px; 
+	  padding-left:35px; 
+	  background-color:#777; 
+	  width:90%; 
+	  border-radius:10px;
+  }
+  
+  </style>
+
+<!-- OR download this same CSS as a separate file. Link in the description box 
+   at Youtube. Channel: Javascript Janice, Lesson 06: "Bunny Slideshow"
+   Put the file in a "css" folder, and then import it to this page with this: 
+   <link href="css/slideshow.css" rel="stylesheet" type="text/css"> -->
+   
+</head>
+
+  <body>
+
+    <div id="slideshow">
+       
+       <div id="bigPic"></div>       
+       <div id="thumbs"></div>
+       
+    </div><!--close id="slideshow"-->
+    
+    <script>
+	
+		var imgArr = ["bunny01.jpg", "bunny02.jpg", "bunny03.jpg", "bunny04.jpg", "bunny05.jpg", "bunny06.jpg", "bunny07.jpg", "bunny08.jpg", "bunny09.jpg", "bunny10.jpg", "bunny11.jpg", "bunny12.jpg", "bunny13.jpg"];
+		
+		// concatenate the file name from the array into an img tag
+		var bigPic = '<img src="images/bunny/' + imgArr[0] + '" width="100%" height="auto">';
+		// output first big pic on page load
+		document.getElementById("bigPic").innerHTML = bigPic;
+		
+		// make the thumbs using an array, pass in the param "i"
+		for(i=0; i<imgArr.length; i++) {
+			var thumb = '<img src="images/bunny/' + imgArr[i] + '" width="100%" height="auto" onclick="swapPic(' + i + ')">';
+			document.getElementById("thumbs").innerHTML += thumb;
+		}
+		
+		// function swaps image when user clicks a thumb
+		// param tells func which thumb was clicked 
+		function swapPic(i) {
+			// use the func param to select the correct array index
+			bigPic = '<img src="images/bunny/' + imgArr[i] + '" width="100%" height="auto">';
+			document.getElementById("bigPic").innerHTML = bigPic;
+		}
+		
+		// Hope you enjoyed this lesson. My name is Jiayuan "Janice" Liu. 
+		// Please gimme a THUMBS UP at YouTube & subscribe to Javascript Janice! THANX!
+
+	</script>
+     
+  </body>
+  
+</html>

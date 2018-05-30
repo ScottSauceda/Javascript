@@ -1,0 +1,104 @@
+<!DOCTYPE>
+<html en="lang">
+
+<head>
+    
+    <title>JS Fahrenheit Celsius Converter</title>
+    
+    <style>
+        
+        body {
+            background-color: #123;
+            margin: 2rem;
+            font-size: 14px;
+        }
+    
+        .boxy {
+            width: 600px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #ABC;
+            color: #456;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 10px solid #456;
+            text-align: center;
+        }
+        
+    
+        
+        input, button {
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 1rem;
+            cursor: pointer;
+        }
+        
+
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="boxy">
+        
+        <h2>JS Fahrenheit Celsius Converter</h2>
+    
+        <h3 style="display:inline-block">Enter Temperature to conver:</h3>
+        
+        <input type="number" id="myTemp">
+
+        <!-- buttons for the = and Clr -->
+        <button onclick="converTemperature('FC')">Convert Fahrenheit to Celsius</button>
+        <button onclick="convertTemperature('CF')">Convert Celsius to Fahrenheit</button>
+        
+        <img src="images/CelsiusAndFahrenheit.jpg" />
+        
+        <h2 id="conversion" style="border:1px solid #999; padding:5px; color:#555">Converted Temperature here</h2>
+        
+    </div>
+    
+<script type = "text/javascript">
+    
+    function convertTemperature(t) {
+        // parameter "t" has 2 possible values: arguments 'FC' or 'CF'
+        // get the value entered for Temperature or Conver:
+        var myTemp = document.getElementById('myTemp').value;
+        myTemp = Number(myTemp); // convert myTemp to actual number
+        //get h3 element that will hold the converted output
+        var conversion = document.getElementById('conversion');
+        var convertedTemp = 0; // a var for the converted temperature
+        var outputStr = ""; // a string for the entire output
+        var from = t.charAt(0);
+        var to = t.charAt(1);
+        
+        if(t == 'FC') { // if Convert Fair to Cels button was clicked
+            convertedTemp = (myTemp - 32) * 5/9; // convert Fahrs-to-Cels
+            convertedTemp = convertedTemp.toFixed(2);
+            //concatenate the full anser, &deg; is HTML Special Entity
+            outputStr = `${myTemp}&deg; C = ${convertedTemp}&deg; F`;
+            
+        } else if (t == 'CF') { // convert Cels to Fair button was clicked
+                convertedTemp = myTemp * 9/5 + 32; //convert Cels-tp-Fahr
+                convertedTemp = convertedTemp.toFixed(2); // 2 decimals
+                outputStr = `${myTemp}&deg; F = ${convertedTemp}&deg; C`;
+            } // end if-else
+         
+          conversion.innerHTML = outputStr; // // output result
+        } // endfunction
+    
+</script>
+    
+</body>
+    
+</html>
+
+
+
+

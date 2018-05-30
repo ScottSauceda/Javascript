@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    
+    <title>JS Loops and Arrays</title>
+    
+    <style>
+        
+        body {
+            background-color: #123;
+            margin: 1rem;
+        }
+    
+        .boxy {
+            width: 450px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #ABC;
+            color: #456;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 10px solid #456;
+            text-align: center;
+        }
+     
+        input, button {
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 1rem;
+            cursor: pointer;
+        }
+        
+        .boxW {
+            width: 50px;
+        }
+      
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="boxy">
+        
+        <h3>It's a String Thing!</h3>
+        
+        <h4>
+            Input a string and some relevant values.<br/>
+            Click the buttohn to get JS String Method results.
+        </h4><hr/>
+        
+        Enter Text: <input type="text" id="myStr"><br/><hr/> 
+        
+        Char At (enter number): <input type="number" class="boxW" id="myCharAt">
+        <br/>
+        Index Of (enter character): <input type="text" class="boxW" id="myIndexOf">
+        <br/><hr/>
+        
+        Select Index Range for Substring:<br/>
+        start: <input type="text" class="boxW" id="mySubStrStart">
+        end: <input type="text" class="boxW" id="mySubStrEnd">
+        <br/><hr/>
+        
+        String Replace (1st occurance only):<br/>
+        replace: <input type="text" class="boxW" id="myReplace">
+        with: <input type="text" class="boxW" id="myReplacement">
+        <br/><hr/>
+        
+        <button onclick="processString()">
+            String Method Results
+        </button>
+        
+        <!-- the outputted result of all the string methods -->
+        <h3 id="strOutput" accesskey="" style="border:1px solid #999; 
+                                padding:5px; color:#555">
+            STRING METHOD OUTPUT</h3>
+        
+    </div>
+    
+    <script>
+        
+        function processString() {
+            
+            // get the string entered by the user
+            var myStr = document.getElementById("myStr").value;
+            var myStrLen = myStr.length;
+            
+            // get the Char At the Index # entered by user
+            var myCharAt = document.getElementById("myCharAt").value;
+            // what character occurs at that index number?
+            var myChar = myStr[myCharAt];
+            
+            // get the Character entered by user
+            var myIndexOf = document.getElementById("myIndexOf").value;
+            // what is the index number of that character?
+            var myIndex = myStr.indexOf(myIndexOf);
+            
+            // get the box for outputting the string results
+            var strOutput = document.getElementById("strOutput");
+            
+            // concatenate our output, including all relevant info
+            var myStrOutput = `String: ${myStr} <br/>Length: ${myStrLen} <br/>The character at index ${myCharAt} is ${myChar}<br/>The index of character ${myIndexOf} is ${myIndex}`;
+            
+            strOutput.innerHTML = myStrOutput;
+            
+        }
+        
+    </script>
+    
+</body>
+    
+</html>
+
+
+
+

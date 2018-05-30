@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Javascript Session03</title>
+      <meta charset="UTF=8" />
+      
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      
+      <style>
+          
+          .boxy {
+              background-color: lightskyblue;
+              color: #ff5;
+              height: 25vh;
+              font: bold 18px sans-serif;
+              margin: 10px;
+              padding: 10px;
+          }
+      
+      </style>
+      
+  </head>
+  
+  <body>
+      
+    <div class="boxy" id="box1">JS output here</div>
+      
+      <div class="boxy" id="box2">Text Input here <br/>
+        <input type="text" name="firstName" id="firstName" placeholder="First Name" />
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+        <button onclick="greetUser()">GREET USER</button>
+      </div>
+        
+    <div class="boxy" id="box3">Numeric Input here <br/>
+          1st Number:<input type="number" name="num1" id="num1" placeholder="Number 1" />
+        2nd Number:<input type="number" name="num2" id="num2" placeholder="Number 2" />
+        <button onclick="calculate()">Calculate</button>
+    </div>
+      
+    <div class="boxy" id="box4">
+      <h2>Choose your Favorite Fruit</h2>
+      <select name="faveFruit" id="faveFruit" onchange="faveFruit()">
+        <option value="apple">Apples</option>
+        <option value="banana">Bananas</option>
+        <option value="mango">Mango</option>
+        <option value="orange">Orange</option>
+        <option value="peach">Peach</option>
+        <option value="pear">Pear</option>
+        <option value="plum">Plum</option>
+     </select>
+    </div>
+      
+    <div id="faveOutput">
+     
+    </div>
+      
+    
+    <script src="js/scripts1.js">
+
+              
+    </script>
+    
+  </body>
+</html>

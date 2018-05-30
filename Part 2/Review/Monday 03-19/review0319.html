@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<script>
+  var squares = [];
+  // write a for loop that puts the square Of the number 1 - 100
+    
+    
+  for(var i = 1; i < 101; i++) {
+      squares.push(i ** 2);
+  }
+    
+  console.log(squares);
+    
+    
+  var discounts = {
+      food: 15,
+      drink: 10,
+      apparel: 20
+  };
+  
+  var cart = [
+    {name: "Jug of Milk", type: "drink", price: 5.00},
+    {name: "Blue Shirt", type: "apparel", price: 10.50},
+    {name: "Burger", type : "food", price: 6.75}
+  ];  
+    var totalPrice = 0;
+    var totalWithDiscount = 0;
+    // Write a loop that goes through the cart and compute the totalPrice and the totalWithDscount amounts.
+    
+    for(let i = 0; i < cart.length; i++) {
+        totalPrice += cart[i].price;
+        let discountedPrice
+        totalWithDiscount += (cart[i].price - (cart[i].price * discounts[cart.type] / 100));
+    }
+    
+    
+    console.log(totalPrice, totalWithDiscount)
+    
+</script>

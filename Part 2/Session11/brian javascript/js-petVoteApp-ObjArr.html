@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Vote for Pet</title>
+
+    </head>
+    
+    <body>
+        
+        <h2>Vote for your Favorite Pet</h2>
+        
+        <script>
+            
+            // make the pets voting choices using a loop instead of tedious hand-typing 50 choices
+            const petsObjArr = [
+                
+                { pet: 'Cat', votes: 0, animalClass: 'mammal' }, 
+                { pet: 'Dog', votes: 0, animalClass: 'mammal' }, 
+                { pet: 'Gerbil', votes: 0, animalClass: 'mammal' }, 
+                { pet: 'Iguana', votes: 0, animalClass: 'reptile' }, 
+                { pet: 'Rabbit', votes: 0, animalClass: 'mammal' }, 
+                { pet: 'Snake', votes: 0, animalClass: 'reptile' },
+                { pet: 'Tropical Fish', votes: 0, animalClass: 'fish' },
+                { pet: 'Parrot', votes: 0, animalClass: 'bird' }
+
+            ];
+            
+            // add new pets to the array
+            petsObjArr.push({ pet: 'Canary', votes: 0, animalClass: 'bird' }); // add to the end
+            petsObjArr.unshift({ pet: 'Tarantula', votes: 0, animalClass: 'arachnid' }); // add to the beginning
+            
+            // eliminate the fish
+            for(let i = 0; i < petsObjArr.length; i++) {
+                // is it a fish?
+                if(petsObjArr[i].animalClass == 'reptile') {
+                   // it's a fish, so get rid of it
+                   petsObjArr.splice(i, 1); // starting at index i, delete 1
+                   // delete petsObjArr[i]
+                }
+            }
+                        
+            for(let i = 0; i < petsObjArr.length; i++) {
+                
+                // make a div to hold the choice so that the user can vote
+                let divvy = document.createElement('div');
+                // make it clickable
+                divvy.addEventListener('click', voteForPet);
+                divvy.innerHTML = petsObjArr[i].pet + "<br/><br/>0";
+                divvy.id = i;
+                // cssText property accepts CSS language as its value
+                divvy.style.cssText = "width:200px; height:100px; margin:50px; background-color:cornflowerblue; color:white; font-size:1.5em; font-family:sans-serif; text-align:center; padding:50px; font-weight:bold; display:inline-block; cursor:pointer";
+                document.body.appendChild(divvy);
+                
+            }
+
+            function voteForPet() {
+                
+                let petID = event.target.id;
+                let petName = petsObjArr[petID].pet;
+                let petVotes = petsObjArr[petID].votes; // get the current pet's votes
+                petVotes++; // increment the pet's vote total
+                petsObjArr[petID].votes = petVotes; // setting the new vote total back to that pet
+                event.target.innerHTML = ""; // empty the box to make way for updated output:
+                event.target.innerHTML = petName + "<br/><br/>" + petVotes; // update the output
+
+            }
+            
+        </script>
+        
+    </body>
+    
+</html>

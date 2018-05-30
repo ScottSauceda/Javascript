@@ -1,0 +1,64 @@
+<!doctype html>
+<script>
+function simpleFruityPie() {
+	var fruits = ["Apple", "Peach", "Mango", "Banana", "Orange", "Pear", "Coconut", "Strawberry", "Blueberry"];
+	var pies = [];
+	/************ MEMORIZE FOR MONDAY'S TEST ************/
+	for (let i = 0; i < fruits.length; i++) {
+		if (fruits[i].length < 7) {
+			pies.push(fruits[i] + '-pie');
+		}
+	}
+	/************************  ************ ************/
+	return pies;
+}
+
+function betterFruityPie() {
+	var fruits = ["Apple", "Peach", "Mango", "Banana", "Orange", "Pear", "Coconut", "Strawberry", "Blueberry"];
+	return fruits.filter(s => s.length < 7).map(s => s + '-pie');
+}
+
+function simpleFizzBuzz(n) {
+	var arr = [];
+	for (let i = 0; i <= n; i++) {
+		if (i % 3 == 0 && i % 5 == 0) {
+			arr.push('FizzBuzz');
+		}
+		else if (i % 3 == 0) {
+			arr.push('Fizz');
+		}
+		else if (i % 5 == 0) {
+			arr.push('Buzz');
+		}
+		else {
+			arr.push(i);
+		}
+	}
+	return arr;
+}
+
+function superSimpleZip(arr1, arr2) {
+	var zip = [];
+	for (let i = 0; i < arr1.length; i++) {
+		zip.push(arr1[i]);
+		zip.push(arr2[i]);
+	}
+	return zip;
+}
+
+function simpleZip(arr1, arr2) {
+	var zip = [];
+	var minLength = Math.min(arr1.length, arr2.length);
+	var maxLength = Math.max(arr1.length, arr2.length);
+	for (let i = 0; i < minLength; i++) {
+		zip.push(arr1[i]);
+		zip.push(arr2[i]);
+	}
+	for (let i = minLength; i < maxLength; i++) {
+		if (arr1.length > minLength) zip.push(arr1[i]);
+		if (arr2.length > minLength) zip.push(arr2[i]);
+	}
+	return zip;
+}
+
+</script>

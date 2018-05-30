@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+  
+    <title>JS Loops and Arrays</title>
+      
+    <style>
+    
+        body {
+            background-color: #abc;
+            font: bold 1.25rem sans-serif;
+            margin: 1rem;
+            text-align: center;
+        }
+        
+        .boxy {
+            background-color: beige;
+            padding: 1rem;
+            width: 60%;
+            margin: 1rem auto;
+            border: 3px dashed orange;
+        }
+        
+      
+    </style>
+      
+  </head>
+   
+  <body>
+    
+    <div class="boxy" id="loopy"></div>
+      
+    <div id="fruit">Fruit Array contents:</div>
+      
+    <script>
+    
+      var loopy = document.getElementById('loopy');
+        
+        for(let i = 0; i < 10; i++) {
+            loopy.innerHTML += i + " ";
+        }
+          
+//        alert(i); // is a leaking variable when "for(var i ....) 
+        
+    var pets = ["Cats", 5, "Dogs"];
+        
+//        console.log(pets[0]);
+//        console.log(pets[1]);
+//        console.log(pets[2]);
+        
+        console.log(pets.length);
+        console.log(pets[pets.length-1]);
+        console.log(pets[pets.length]);
+        
+        var fruitArr = ["Apple", "Banana", "Cherry", "Grape", "Kiwi", "Pear"];
+        
+        console.log(fruitArr[0]);
+        
+        console.log(fruitArr[2]);
+        
+        console.log(fruitArr[fruitArr.length-1]);
+        
+        console.log(fruitArr[fruitArr.length-2]);
+        
+        var fruitList = '<ul>';
+        
+        fruitList += '<li>' + fruitArr[0] + '</li>';
+        fruitList += '<li>' + fruitArr[1] + '</li>';
+        fruitList += '<li>' + fruitArr[2] + '</li>';
+        fruitList += '<li>' + fruitArr[3] + '</li>';
+        fruitList += '<li>' + fruitArr[4] + '</li>';
+        fruitList += '<li>' + fruitArr[5] + '</li>';
+        
+        fruitList += '</ul>';
+        
+        var fruitList2 = '<ol><li>' + fruitArr[0] + '</li><li>' + fruitArr[1] + '</li><li>' + fruitArr[2] + '</li><li>' + fruitArr[3] + '</li><li>' + fruitArr[4] + '</li><li>' + fruitArr[5] + '</li></ol>';
+        
+//        document.getElementById("fruit").innerHTML = fruitList + fruitList2;
+        
+//        for (let i = 0; i < fruitArr.length; i++) {
+//            document.getElementById("fruit").innerHTML += "<br/>" + fruitArr[i];
+//        }
+        
+        var fruitDiv = document.getElementById('fruit');
+//        var fruitList3 = '<ul>'; // start the list
+//        
+//        for (let i = 0; i < fruitArr.length; i++) {
+//            fruitList3 += '<li>' + fruitArr[i] + '</li>'; // add list item
+//        }
+//        fruitList3 += '</ul>'; // end the list
+//        fruitDiv.innerHTML += fruitList3;
+        
+        var fruitList4 = '<ul>'; // start the list
+        var i = 0; // declare the counter variable BEFORE the loop
+        while(i < fruitArr.length) { // run the loop WHILE condition is true
+            fruitList4 += '<li>' + fruitArr[i] + '</li>'; // add list item
+            i++; // to end each iteration, incremenet counter variable
+        }
+        
+        fruitList4 += '</ul>'; // end the list
+        fruitDiv.innerHTML += fruitList4;
+        
+        
+        var fruits = ["Apple", "Banana", "Cherry", "Grape", "Kiwi", "Pear"];
+        // these array methods add and delete items
+        fruitArr.pop(); // deletes last item from array
+        console.log(fruitArr); // "Apple", "Banana", "Cherry", "Grape", "Kiwi"
+        
+        fruitArr.shift(); // deletes first item from array
+        console.log(fruitArr); // "Banana", "Cherry", "Grape", "Kiwi"
+        
+        fruitArr.unnshift("Apricot"); // adds item to beginning of array
+        console.log(fruitArr); // "Apricot","Banana", "Cherry", "Grape", "Kiwi"
+        
+        fruitArr.push("Plum"); // add item to end of aray
+        console.log(fruitArr); // "Apricot","Banana", "Cherry", "Grape", "Kiwi", "Plum"
+        
+        // splice: starting at specified index, delete X number of items
+        fruitArr.splice(1,3); // starting at index 1, delete 3 items
+        console.log(fruitArr); // "Apricot", "Kiwi", "Plum"
+        
+    </script>
+      
+  </body>
+    
+</html>

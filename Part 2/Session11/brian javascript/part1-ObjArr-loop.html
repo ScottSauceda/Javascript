@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Obj Arr Loop Skillset</title>
+        
+        <style>
+            
+            body {
+                font-family: sans-serif;
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .divvy {
+                width:420px;
+                height:250px; 
+                margin:30px; 
+                background-color:cornflowerblue; 
+                color:white; 
+                font-size:1.5em; 
+                font-family:sans-serif; 
+                text-align:center; 
+                padding:50px; 
+                font-weight:bold; 
+                display:inline-block; 
+/*                cursor:pointer;*/
+            }
+            
+            h2 {
+                background-color: orange;
+                padding: 20px;
+            }
+            
+            input[type="date"] {
+                display: block;
+                margin: 0px;
+                font-size: 1.25em;
+            }
+            
+        </style>
+
+    </head>
+    
+    <body>
+        
+        <h2>Choose a Vacation</h2>
+        
+        <script>
+            
+            const places = [
+                
+                { place: 'Beach', country: 'Thailand', startDate: 'Choose', endDate: 'Choose', price: 2200, isTour: true, activites: ['frolicking', 'galvanting', 'hanging out', 'eating Thai food'] },
+                
+                { place: 'Cruise', country: 'Bahamas', startDate: 'Choose', endDate: 'Choose', price: 2500, isTour: true, activites: ['partying', 'shopping', 'sightseeing', 'snorkeling'] },
+                
+                { place: 'Casino', country: 'Vegas', startDate: 'Choose', endDate: 'Choose', price: 3500, isTour: false, activites: ['gambling', 'shopping', 'eating', 'going to shows'] },
+                
+                { place: 'Mountains', country: 'Nepal', startDate: 'Choose', endDate: 'Choose', price: 2200, isTour: false, activites: ['mountain climbing', 'hiking', 'visiting temples', 'shopping'] },
+           
+                { place: 'Stonehenge', country: 'Nepal', startDate: 'Choose', endDate: 'Choose', price: 2800, isTour: false, activites: ['exploring', 'hiking', 'investigating mysteries', 'drinking'] },
+                
+                { place: 'Machu Pichu', country: 'Peru', startDate: 'Choose', endDate: 'Choose', price: 2700, isTour: true, activites: ['investigating mysteries', 'hiking the Incan Trail', 'visiting ruins', 'riding a llama', 'eating cuy'] },
+                
+
+            ];
+           
+                        
+            for(let i = 0; i < places.length; i++) {
+                
+                // make a div to hold the choice so that the user can vote
+                let divvy = document.createElement('div');
+//                // make it clickable
+                divvy.innerHTML = places[i].place + '<br/>Choose Start-End Dates:';
+                divvy.indx = i; // assign an id equal to the index position
+                divvy.className = 'divvy'; // assing a CSS class
+                document.body.appendChild(divvy); // output the div to the DOM
+                
+                // put 2 date choosers and out them in the divvy div box
+                let startDateChooser = document.createElement('input');
+                //assign the input elmenet its type
+                startDateChooser.type = "date"; // assign input type
+                startDateChooser.indx = i;
+                divvy.appendChild(startDateChooser);
+                
+                // <input type="date" id="startDate">
+
+                let endDateChooser = document.createElement('input');
+                endDateChooser.type = "date"; // assign input type
+                endDateChooser.indx = i;
+                divvy.appendChild(endDateChooser);
+
+                
+            } // end loop
+
+            function bookVacation() {
+                
+               
+            }
+            
+        </script>
+        
+    </body>
+    
+</html>

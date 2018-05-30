@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Hello World from JS</title>
+    
+    <style>
+        
+        .boxy {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: coral;
+            color: #FF5;
+            height: 25vh;
+            font: bold 18px sans-serif;
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        .numberBtn {
+            width: 50px;
+            height: 50px;
+            background: #ddd;
+        }
+        
+        .operatorBtn {
+            width: 50px;
+            height: 50px;
+            background: #bbb;
+        }
+        
+        #calculator {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-areas:
+            "mult divide sub add"
+            "btn7 btn8 btn9 mod"
+            "btn4 btn5 btn6 pow"
+            "btn1 btn2 btn3 clear"
+        }
+        
+        .btn0{grid-area:btn0;}
+        .btn1{grid-area:btn1;}
+        .btn2{grid-area:btn2;}
+        .btn3{grid-area:btn3;}
+        .btn4{grid-area:btn4;}
+        .btn5{grid-area:btn5;}
+        .btn6{grid-area:btn6;}
+        .btn7{grid-area:btn7;}
+        .btn8{grid-area:btn8;}
+        .btn9{grid-area:btn9;}
+        .mult{grid-area:mult;}
+        .divide{grid-area:divide;}
+        .sub{grid-area:sub;}
+        .add{grid-area:add;}
+        .mod{grid-area:mod;}
+        .pow{grid-area:pow;}
+        
+    </style>
+    
+</head>
+    
+<body>
+    
+    <div class="boxy" id="box1">Calculator output here</div>
+    
+    
+    
+    <div class="boxy" id="box3">
+        
+        
+       1st Num: <input type="number" name="num1" id="num1">
+        
+         &nbsp; &nbsp; 
+        
+        2nd Num: <input type="number" name="num2" id="num2">
+        
+        <div id="calculator">
+        
+        <button class="add operatorBtn" onclick="calculate()">+</button>
+        
+        <button class="sub operatorBtn" onclick="subtract()">-</button>
+        
+        <button class="mult operatorBtn" onclick="multiply()" >*
+        </button>
+        
+        <button class="divide operatorBtn" onclick="division()">/</button>
+        
+        <button class="pow operatorBtn" onclick="exponent()">**</button>
+        
+        <button class="mod operatorBtn" onclick="modulus()">%</button>
+
+        <button class="btn1 numberBtn" onclick="btn1()">1</button>
+            
+        <button class="btn2 numberBtn" onclick="btn2()">2</button>
+            
+        <button class="btn3 numberBtn" onclick="btn3()">3</button>
+            
+        <button class="btn4 numberBtn" onclick="btn4()">4</button>
+            
+        <button class="btn5 numberBtn" onclick="btn5()">5</button>
+            
+        <button class="btn6 numberBtn" onclick="btn6()">6</button>
+            
+        <button class="btn7 numberBtn" onclick="btn7()">7</button>
+            
+        <button class="btn8 numberBtn" onclick="btn8()">8</button>
+            
+        <button class="btn9 numberBtn" onclick="btn9()">9</button>
+            
+        <button class="btn0 numberBtn" onclick="btn0()">0</button>
+            
+    
+
+    </div>
+        
+        </div>
+        
+        
+  
+    
+    <script src="js/scripts1.js">   
+
+    </script>
+    
+</body>
+    
+</html>
+
+

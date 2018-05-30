@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     
+  <title>JS Form Validation HTML</title>
+    
+  <meta charset="UTF-8" />
+ 
+    <!--  <link href="" rel="" type="" /> -->
+     
+    <style>
+     
+        .boxy {
+            width: 600px;
+            margin: 24px auto;
+            padding: 24px;
+            background-color: #abc;
+            color: #123;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        
+     
+     </style>
+     
+  </head>
+    
+ <body>
+     
+     <div class="boxy" id="date-time-div">
+        
+         <p>Click the button to get a "Timely Greeting"</p>
+         
+         <input type="text" name="firstName" id="firstName" />
+         
+         <button onclick="timelyGreeting()">Get Timely Greeting!</button>
+         
+         <h2 id="greeting">&nbsp;</h2>
+         
+     </div><!-- end .boxy -->
+     
+     
+         
+   <script type="text/javascript">
+     
+    var dateTime = new Date(); // instantiate a Date obj
+       
+    var hour = dateTime.getHours(); // returns hour in mil time
+       
+    var minute = dateTime.getMinutes(); // returns minute
+       
+    // add a leading zero to minute if less than 10
+       
+       if(minute < 10) {
+           minute = "0" + minute;
+       }
+       
+    var timeIs = "The current time is: " + hour + ":" + minute;
+    
+       // String Interpolation: ES5 alternative to concatenation
+    timeIs = `The time is now: ${hour}:${minute}`;
+    //alert(timeIS); 
+       
+    // function outputs a "Timely" Personalized Greeting
+       
+       
+    function timelyGreeting() {
+        
+            // refresh the hour and minute since page load
+            
+            var d = new Date();
+        
+            var hour = d.getHours(); // returns hour in mil time
+       
+            var minute = d.getMinutes(); // returns minute
+        
+               if(minute < 10) {
+                   minute = "0" + minute;
+           }
+       
+        
+            var timeMsg = "The current time is: " + hour + ":" + minute;
+        
+            var myH2 =  document.getElementById("greeting");
+        
+            var firstName = document.getElementById("firstName").value;
+        
+        // variable to store our "Good Morning/Afternoon/Evening"
+        
+             var goodSomething = "";
+            
+                if(hour < 4) {
+                 goodSomething  = "Hey, Night Owl!";
+              } else if (hour < 6) {
+                  goodSomething = "Hey, Early Bird";
+              } else if(hour < 12) {
+                goodSomething = "Good Morning";
+              } else if(hour < 18) {
+                goodSomething = "Good Afternoon";
+              }    else {
+                goodSomething = "Good Evening";
+              }
+            
+        
+            var greeting = goodSomething + ", " + firstName + "! " + timeMsg;
+        
+            // output the greeting
+        
+            myH2.innerHTML = greeting;
+            document.getElementById("firstName").value="";
+        }
+       
+   </script>
+    
+ </body>
+    
+</html>

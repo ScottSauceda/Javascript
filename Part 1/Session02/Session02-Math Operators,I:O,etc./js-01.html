@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+  <style>
+  
+      .boxy {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: coral;
+          color: #ff5;
+          height: 25vh;
+          font: bold 18px sans-serif;
+          margin: 10px;
+          padding: 10px;
+      }
+    
+      
+  </style>
+      
+  </head>
+    
+  <body>
+      
+  <div class="boxy" id="box1">JS output here</div>
+      
+  <div class="boxy" id="box2">
+  
+    <input type="text" name="firstName" id="firstName" placeholder="First Name">
+      
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+      
+    <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+      
+  </div>
+      
+  <div class="boxy" id="box3">Numeric Input Here</div>
+      
+    <script>
+  
+    // document.write("Hello World from JS!");
+      
+//    document.getElementById("box1").innerHTML = "<h1>Hello World From JS!</h1>";
+      
+    // This is a one-line Javascript comment.
+      
+    /* This is a multi-line Javascript comment.
+    
+        It can be as many lines long as needed.    */
+        
+    var firstName = document.getElementById('firstName').value ;
+        
+    var lastName = document.getElementById('lastName').value;
+        
+    var faveFruit = 'Mangoes';
+        
+    var message = firstName + " likes " + faveFruit;
+    
+//    console.log(message);
+      
+    var msg = '<h1> Hello ' + firstName + " " + lastName + ' from JS!</h1>'
+    
+    document.getElementById("box1").innerHTML = msg;
+        
+    var myScore = 3200;
+        
+//    console.log(myScore);
+        
+    var score1 = 5500;
+        
+    var score2 = 3800;
+        
+    var totScore = score1 + score2;
+        
+//    console.log(totScore);  
+    
+    // what happens if you add numbers in quotes?
+    
+    // console.log('2' + '2'); // You get 22. '2' is a string
+        
+    var finalGrade = 99; // finalGrade declared as a Number
+        
+//    console.log(finalGrade);
+        
+    finalGrade = 'A+'; // finalGrade is changed to a String
+        
+//    console.log(finalGrade);
+        
+    var couponCode = "Deal2018"; // declared as a string
+        
+//    console.log(couponCode);
+        
+    couponCode = 123456;
+        
+//    console.log(typeof(couponCode)); // Numbers
+        
+    var winningTicket; // no inital value assigned
+        
+//    alert( winningTicket); // Undefined
+        
+    var loggedIn = false;
+        
+//    alert(loggedIn); // false
+        
+//    alert(typeof(loggedIn)); // boolean
+        
+    
+        
+  </script>
+    
+  </body>
+    
+</html>

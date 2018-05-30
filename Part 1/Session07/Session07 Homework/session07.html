@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+    <title>String Methods</title>
+      
+    <meta charset = "UTF-8"/>
+      
+    <style>
+        
+        body {
+            background-color: #468;
+            color: #246;
+            font-weight: bold;
+        }
+        
+        #demo {
+            background-color: bisque;
+            font-family: sans-serif;
+            width: 500px;
+            min-height: 300px;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+            border: 10px dotted #246;
+            border-radius: 10px;
+            font-size: 1.25em;
+        }
+        
+        input, button {
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+      
+    </style>
+      
+  </head>
+    
+  <body>
+    <div id="demo">
+      <h3>It's a String Thing!</h3>
+      <h4>Input a string and some relevant values. Click the button to get Javascript String Method results</h4>
+      
+        <hr/>
+        
+      String: <input type="text" id="myStr" />
+        
+        <br/><hr/>
+        
+      Char At: <input type="number" id="myCharAt" style="width:50px"/> &nbsp;
+        
+      Index Of: <input text="number" id="myIndexOf" style="width:50px;" />
+        
+        <br/><hr/>
+    
+      Substring Select Index Range: <br/>
+        
+      start: <input type="text" id="mySubStrStart" style="widt:50px;" /> &nbsp;
+        
+        <br/>
+        
+      end: <input type="text" id="mySubStrEnd" style="widt:50px;" /> &nbsp;
+        
+        <br/><hr/>
+        
+      String Replace 1st Occurance: <br/>
+      replace: <input type="text" id="myReplace" style="width:50px"/> &nbsp;
+      with: <input type="text" id="myReplacement" style="width:50px"/> &nbsp;<br/><hr/>
+        
+      <button onclick="processString()">
+        String Method Results</button>
+        
+      <h4 id="strOut" align="center">Javascript String Method Results:</h4>
+        
+    </div> <!-- end #demo -->
+    
+    <script src="js/myScript.js"></script>
+      
+  </body>
+    
+</html

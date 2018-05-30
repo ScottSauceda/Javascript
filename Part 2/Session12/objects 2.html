@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<script src="cat.js"></script>
+<script>
+var fluffy = new Cat('Fluffy', 2);
+fluffy.toys = ['Ball', 'Yarn'];
+fluffy.isNeutered = true;
+
+var whiskers = new Cat('Whiskers', 10);
+whiskers.toys = ['Castle', 'Mouse', 'String']
+
+var cats = [fluffy, whiskers];
+for (let i = 0; i < cats.length; i++) console.log(cats[i].whoAreYou());
+</script>
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chinese Zodiac Animals</title>
+
+<style>
+  
+   body {
+	  background-color: #333;  
+   }
+  
+  #app {
+	 width: 1250px;
+	 background-color: maroon;
+	 padding: 25px; 
+	 height: 620px;
+	 margin: 0 auto;
+	 border-radius: 10px;
+	 border: 3px solid #AAA;
+  }
+  
+  #thumbsDiv {
+    position: relative;
+	width: 750px;
+    background-color: #fff;
+    background-image: url("images/janice-w-bunny-600x261.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+	padding: 25px; 
+	height: 540px;
+	float: left;
+	border-radius: 10px;
+	margin-right: 25px;
+	border: 3px solid #AAA;
+    cursor: pointer;
+  }
+  
+  #bigPicDiv {
+	width: 350px;
+	background-color: #FFF;
+	padding: 25px; 
+	height: 540px;
+	float: right;
+	border-radius: 10px;
+	border: 3px solid #AAA;
+    font-size: 2em;
+    font-family: sans-serif;
+    text-align:center;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #700;
+  }
+  
+  img { /* this will style the little animal thumbs */
+        margin: 1%;
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #555;
+        border: 2px solid brown;
+  }
+    
+  #bigPicDiv img {
+	  border: none;
+	  box-shadow: none;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+  }
+    
+    #chinCharDiv { /* holds the chinese character */
+        position: absolute;
+        display: none;
+        background-color: white;
+        width: 244px;
+        height: 157px;
+        top: 404px;
+        left: 130px;
+        z-index: 1;
+    }
+    
+  </style>
+
+
+</head>
+
+  <body>
+
+    <div id="app">
+        
+       <header>
+       
+         <h2>Learn the Chinese names of the 12 Animals of the Chinese Zodiac</h2>
+           
+         <h3>Pay close attention to the sounds, so that you can you are prepared for the quiz!</h3>
+       
+       </header>
+       
+       <div id="bigPicDiv"></div>       
+       <div id="thumbsDiv">
+       
+         <div id = "chinCharDiv"></div>
+       
+       </div>
+        
+        <footer></footer>
+       
+    </div><!--close id="app"-->
+    
+    <script>
+        
+        const animals = [
+            { eng: "chicken", chi: "ji", pin: "ji&#772;", year: 2017 },
+            { eng: "cow", chi: "niu", pin: "niu&#769;", year: 2009},
+            { eng: "dog", chi: "gou", pin: "gou&#780;", year: 2018 },
+            { eng: "dragon", chi: "long", pin: "lo&#769;ng", year: 2012 },
+            { eng: "goat", chi: "yang", pin: "ya&#769;ng", year: 2015 },
+            { eng: "horse", chi: "ma", pin: "ma&#780;", year: 2014 },
+            { eng: "monkey", chi: "hou", pin: "ho&#769;uzi", year: 2016 },
+            { eng: "pig", chi: "zhu", pin: "zhu&#772;", year: 2019 },
+            { eng: "rabbit", chi: "tu", pin: "tu&#768;zi", year: 2011 },
+            { eng: "rat", chi: "shu", pin: "la&#780;oshu&#780;", year: 2008 },
+            { eng: "snake", chi: "she", pin: "she&#769;", year:2013 },
+            { eng: "tiger", chi: "hu", pin: "la&#780;ohu&#780;", year: 2010 }
+        ];
+        
+        
+        // loop through the array, making 12 images
+        // the eng property supplies the file name: chicken.jpg, cow.jpg, etc
+        
+        
+        const bigPicDiv = document.getElementById('bigPicDiv');
+        const thumbsDiv = document.getElementById('thumbsDiv');
+        const chinCharDiv = document.getElementById('chinCharDiv');
+        
+        // put the zodiac wheel pic in the bigPicDiv on page load
+        const bigPic = new Image();
+        bigPic.src = "images/zodiac-animal-wheel.png";
+        bigPicDiv.appendChild(bigPic);
+        
+        
+        function spinWheel() {
+            // rotate the wheel, (the bigPic that appears on page load)
+            bigPic.style.transform += "rotate(2deg)";
+        }
+        
+        // call the spinWheel function repeatedly to animate the wheel
+        var wheelInterval = setInterval(spinWheel, 40);
+        
+        
+        //  SOUND
+        const sound = new Audio();
+        
+        
+        // THUMBPIC
+        
+        for(let i = 0; i < animals.length; i++) {
+            
+            // make a new dynamic image
+            let thumbPic = new Image();
+            thumbPic.src = "images/" + animals[i].eng + ".jpg";
+            thumbPic.alt = "Chinese Zodiac Animal - Year of the" + animals[i].eng;
+            // custom properties
+            thumbPic.indx = i;
+            thumbPic.eng = animals[i].eng;
+            thumbPic.chi = animals[i].chi;
+            thumbPic.pin = animals[i].pin;
+            thumbPic.year = animals[i].year;
+            thumbPic.addEventListener('click', swapAnimal);
+            thumbsDiv.appendChild(thumbPic);
+            
+        } // end for loop
+        
+        function swapAnimal() { // runs on thumb (animal) click
+            
+            //empty out the bigPicDiv every time to start
+            bigPicDiv.innerHTML = "";
+            
+            // 1.) replace bigPic with this animal
+            // event.target is the animal that was clicked to call function; event.target is also known as simply "this" this.eng
+            bigPic.src = `images/${this.eng}.jpg`;
+            // clear the interval so that the animal isn't spinning
+            clearInterval(wheelInterval);
+            // reset rotation to zero so that animal pic isn't crooked
+            bigPic.style.transform = "rotate(2deg)";
+            
+            // reoutput the bigPic into the bigPicDiv which is empty
+            bigPicDiv.appendChild(bigPic);
+            
+            // 2.) output the english and Pinyin under the animal image
+            bigPicDiv.innerHTML += this.eng + " - " + this.pin; 
+            
+            // 3.)
+            sound.pause();
+            sound.src = `audio/${this.eng}.mp3`
+            sound.play();
+            
+            // 4.) output the Chinese character into the AP div, so that it looks like she is saying the character
+            
+            chinCharDiv.style.backgroundImage = "url(images/char-" + this.chi + ".jpg)";
+            chinCharDiv.style.backgroundRepeat = "no-repeat";
+            chinCharDiv.style.backgroundPosition = "center";
+            chinCharDiv.style.backgroundSize = "contain";
+            chinCharDiv.style.display = "block";
+            
+            // 5.) Output the year under the Emglish - Pinyin
+            bigPicDiv.innerHTML += "<p style='font-size: 0.6em'>" + listYears(this.year) + "</p>";
+            
+        }  // function swapAnimal()
+        
+        function listYears(yr) {
+            
+            let listOfYears = ""; // 1976,1988,2000,2012, 2024, 2046
+            
+            let startYear = yr - 180;
+            
+            let endYear = yr + 60;
+            
+            for( let i = startYear; endYear; i+=12) {
+                listOfYears += i + " ";
+            } // end for loop
+            return listOfYears;
+        } // end function()
+
+	</script>
+     
+  </body>
+  
+</html>

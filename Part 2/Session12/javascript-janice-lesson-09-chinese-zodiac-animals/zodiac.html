@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chinese Zodiac</title>
+
+<style>
+  
+   body {
+	  background-color: #333;  
+   }
+  
+  #app {
+	 width: 90%;
+	 background-color: maroon;
+	 padding: 25px; 
+	 height: 590px;
+	 margin: 0 auto;
+	 border-radius: 10px;
+	 border: 3px solid #AAA;
+  }
+  
+  #thumbs {
+	width: 70%;
+	background-color: #fff;
+	padding: 1%; 
+	height: 540px;
+	float: left;
+	border-radius: 10px;
+	margin-right: 1%;
+	border: 3px solid #AAA;
+  }
+  
+  #bigPic {
+	width: 20%;
+	background-color: #fff;
+	padding: 2%; 
+	height: 540px;
+	float: right;
+	border-radius: 10px;
+	border: 3px solid #AAA;
+  }
+  
+  .animal { /* hold the animal thumbs */
+	  margin-left:50px; 
+	  font-family:sans-serif; 
+	  padding:5px; 
+	  padding-left:35px; 
+	  background-color:#777; 
+	  width:90%; 
+	  border-radius:10px;
+  }
+    
+    img { /* this will style the little animal thumbs */
+        margin: 1%;
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #555;
+        border: 2px solid brown;
+    }
+    
+    #bigPic img {
+        border: none;
+        box-shadow: none;
+    }
+  
+  </style>
+
+
+   
+</head>
+
+  <body>
+
+    <div id="app">
+       
+       <div id="bigPic"></div>       
+       <div id="thumbs"></div>
+     
+    </div><!--close id="app"-->
+    
+    <script>
+        
+		
+      const animals = [
+        {eng: "chicken", chi: "ji", pin: "ji&#772;"},
+        {eng: "cow", chi: "niu", pin: "niu&#769;"},
+        {eng: "dog", chi: "gou", pin: "gou&#780;"},
+        {eng: "dragon", chi: "long", pin: "lo&#769;ng"},
+        {eng: "goat", chi: "tang", pin: "ya&#769;ng"},
+        {eng: "horse", chi: "ma", pin: "ma&#780;"},
+        {eng: "monkey", chi: "hou", pin: "ho&#769;uzi"},
+        {eng: "pig", chi: "zhu", pin: "zhu&#772;"},
+        {eng: "rabbit", chi: "tu", pin: "tu&#768;zi"},
+        {eng: "rat", chi: "shu", pin: "la&#780;oshu&#780"},
+        {eng: "snake", chi: "she", pin: "she&#769"},
+        {eng: "tiger", chi: "hu", pin: "la&#780;ohu&#780"}
+        
+      ];
+        
+        // loop throough the array, making 12 images
+        // the eng property supplices the file name: chicken,jpg, cow.jpg, etc
+        
+        var thumbsDiv = document.getElementById("thumbs");
+        
+        for(let i = 0; i < animals.length; i++) {
+            
+            //make a new dynamic image
+            let thumbPic = new Image();
+            thumbPic.src = "images/" + animals[i].eng + ".jpg";
+            thumbPic.addEventListener('click', swapAnimal);
+            thumbsDiv.appendChild(thumbPic);
+        }
+        
+        function swapAnimal() {
+            
+        }
+        
+	</script>
+     
+  </body>
+  
+</html>

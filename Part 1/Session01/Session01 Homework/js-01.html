@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Javascript Introduction</title>
+      <meta charset="UTF=8" />
+      
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      
+      <style>
+          
+          .boxy {
+              background-color: lightskyblue;
+              color: #ff5;
+              height: 25vh;
+              font: bold 18px sans-serif;
+              margin: 10px;
+              padding: 10px;
+          }
+      
+      </style>
+      
+  </head>
+  
+  <body>
+      
+    <div class="boxy" id="box1">JS output here</div>
+    <div class="boxy" id="box2">Text Input here <br/>
+      <input type="text" name="firstName" id="firstName" placeholder="First Name" />
+      <input type="text" name="lastName" id="lasstName" placeholder="Last Name" />
+    </div>
+        
+    <div class="boxy" id="box3">Numeric Input here</div>
+      
+      
+    
+    
+    <script>
+//      document.write("Hello World from JS!");
+      document.getElementById("box1").innerHTML = "<h1>Hello World from JS</h1>";
+        
+      var firstName = document.getElementById("firstName").value
+      var lastName = document.getElementById("lastName").value;
+      var faveFruit = "Mangoes";
+      var message = firstName + " likes " + faveFruit;
+      console.log(message);
+        
+      var msg = "<h1>Hello " + firstName + " " + lastName + " from JS!</h1>";
+        
+      document.getElementById("box1").innerHTML = msg;
+        
+        
+      var myScore = 3200;
+      console.log(myScore);
+      
+      var score1 = 5500;
+      var score2 = 3800;
+      var totScore = score1 + score2;
+      //alert(totScore);
+        
+      // what happens when you add numbers in quotes?
+//      alert("2"+ "2") // you get 22. "2" is a string
+        
+      var finalGrade = 99; // finalGrade declared as a Number
+      //alert(finalGrade);
+      finalGrade = "A+"; // finalGrade is changed to a string
+//      alert(finalGrade);
+        
+      var couponCode = "Deal2018"; // declared as a string
+      //alert(couponCode);
+      couponCode = 123456; // coupon code changed to a Number
+//      alert(couponCode);
+      
+      var couponCode = "Deal2018";
+      //alert(typeof(couponCode)); // string
+      couponCode = 123456;
+//      alert(typeof(couponCode)); // Number
+        
+      var winningTicket; // no initial value assigned
+//      alert(winningTicket); // Undefined
+        
+      var loggedIn = false;
+      //alert(loggedIn); // false
+      //alert(typeof(loggedIn)); // boolean
+        
+      
+      
+        
+    </script>
+    
+  </body>
+</html>

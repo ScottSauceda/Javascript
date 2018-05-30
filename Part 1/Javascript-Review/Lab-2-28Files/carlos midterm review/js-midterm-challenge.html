@@ -1,0 +1,63 @@
+<!doctype html>
+<p>First Name: <input type="text" name="firstName"></p>
+<p>Middle Name: <input type="text" name="middleName"></p>
+<p>
+	<button onclick="greetUser('first')">Greet First</button>
+	<button onclick="greetUser('second')">Greet Second</button>
+</p>
+<p>BG Color: <input id="colorPicker" type="color" onchange="changeBackgroundColor()"></p>
+<-- EXTRA CREDIT -->
+<p><button onclick="extraCreditGreeting()">EXTRA EXTRA!!</button></p>
+
+<h3 id="result-msg">OUTPUT HERE</h3>
+
+<script>
+
+/**
+ * Function outputs greeting and name length to element with id 'result-msg'.
+ * If placeParam is 'first', then the first name is used for the greeting.
+ * If placeParam is 'second', then the middle name is used for the greeting.
+ * The greeting should read "Hello 'Name', your whole name is X characters long."
+ */
+function greetUser(placeParam) {
+	/** FETCH INPUT **/
+	
+
+	/** DO STUFF **/
+
+
+	/** WRITE OUTPUT **/
+}
+
+/**
+ * Function changes the background color of element with id 'result-msg'. 
+ * Runs when the user changes the color of input with id 'colorPicker'.
+ */
+function changeBackgroundColor() {
+	/** FETCH INPUT **/
+	
+
+	/** DO STUFF **/
+
+
+	/** WRITE OUTPUT **/
+}
+
+/**
+ * Function outputs greeting to element with id 'result-msg'.
+ * Greeting must randomly select either the first or the middle name.
+ * Create a random integer between 0 and 23, and one between 0 and 59
+ * to represent the time for the greeting.
+ * The format of the greeting is "Good ${partOfDay}. The random generated time is ${hours24}:${minutes} (${hour12}:${minutes} ${amOrPm})."
+ */
+function extraCreditGreeting() {
+	/** FETCH INPUT **/
+	
+
+	/** DO STUFF **/
+
+
+	/** WRITE OUTPUT **/
+}
+
+</script>

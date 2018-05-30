@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     
+  <style>
+      
+      body {
+          font-family: sans-serif;
+          text-align: center;
+          background-color: rgb(244,255,233);
+      }
+     
+      #wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          letter-spacing: 2px;
+          width: 400px;
+          height: 400px;
+          padding: 2rem;
+          margin: 2rem auto;
+      }
+      
+      #colordiv {
+          width: 300px;
+          height: 300px;
+          background: #ccc;
+          border: 2px solid #333;
+          margin: 2rem auto;
+      }
+      
+      .btn {
+          font-size: 1rem;
+          padding: 5px;
+      }
+     
+     
+  </style>
+     
+     
+ </head>
+    
+ <body>
+     
+  <h2>Random color generator </h2>
+     
+  <div id="wrapper">
+      
+    <h3>Pick a color:</h3>
+      
+      <input type="color" id="colorpicker" onchange="changecolor();" />
+     
+      
+    <!-- We will color this div -->
+    <div id="colordiv"></div>  
+    
+    <!-- Use this color -->  
+    <h3 id="newcolor">#ccc</h3>
+      
+      
+     <button onclick="setrandomcolor();" class="btn">Random Color</button>
+
+      
+  </div>  <!-- wrapper ends -->
+        
+    
+     
+     
+  <script>
+      
+      
+      function setrandomcolor () {
+          
+        // Generate a random number bewteen 0 - 256 rounded down
+          
+          /*
+          var R = Math.floor(Math.random()*256);
+          var G = Math.floor(Math.random()*256);
+          var B = Math.floor(Math.random()*256);
+          
+        // Creates a string containing the full RGB random value
+          var randomcolor = 'rgb(' + R +', '+G+', '+B +')';
+          
+          
+          */
+          
+          var randomcolor = Math.floor(Math.random() * 16777216).toString(16);
+          
+            colordiv.style.backgroundColor = '#' +randomcolor;
+          
+          
+          
+          document.getElementById('newcolor').innerHTML = '#' +randomcolor;
+          
+          
+      }
+      
+      
+      
+      
+      
+      function changecolor() { 
+          
+      // Get the color value that the user has chosen
+          var colorvalue = document.getElementById('colorpicker').value;
+          
+     // Get the div object, so we can change it's background color
+          var colordiv = document.getElementById('colordiv');
+          
+    // Set the background of the div to the new color
+          colordiv.style.backgroundColor = colorvalue;
+          
+        document.getElementById('newcolor').innerHTML = randomcolor;
+    
+          
+      }
+  </script>
+    
+    
+ </body>
+
+</html>

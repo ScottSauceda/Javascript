@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+  <style>
+  
+      #wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: sans-serif;
+          letter-spacing: 2px;
+          width: 400px;
+          height: 400px;
+          padding: 2rem;
+          margin: 2rem auto;
+          text-align: center;
+      }
+      
+      #colorDiv {
+          width: 300px;
+          height: 300px;
+          background: #ccc;
+          border: 2px solid #333;
+          margin: 2rem auto;
+      }
+      
+      .btn {
+          font-size: 1rem;
+          padding: 5px;
+      }
+      
+  </style>
+      
+  </head>
+    
+  <body>
+
+    <!-- Color Picker Application -->
+      
+    <div id="wrapper">
+    
+      <h2> Pick a Color:</h2>
+        
+      <input type="color" id="colorPicker" onchange="changeColor()">
+        
+      <div id="colorDiv"></div> <!-- div to color -->
+        
+      <h2 id="newColor">#ccc</h2> <!-- color value -->
+        
+      <button onclick="setRandomColor()" class="btn">Random Color</button>
+      
+    </div>
+      
+      
+    <script src="js/scripts.js"></script>
+    
+  </body>
+    
+</html>

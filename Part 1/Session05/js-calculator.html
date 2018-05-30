@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     
+  <title>JS Calculator</title>
+    
+  <meta charset="UTF-8" />
+ 
+    <!--  <link href="" rel="" type="" /> -->
+     
+    <style>
+    
+        body {
+            background-color: #123;
+            margin: 2rem;
+        }
+        
+        .boxy {
+            width: 300px;
+            height: 500px;
+            margin: 24px auto;
+            padding: 24px;
+            background-color: #abc;
+            color: #123;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 5px solid #88a;
+            text-align: center;
+        }
+        
+        #numBox {
+            font-size: 1.5rem;
+            background-color: lightyellow;
+            border: 3px solid orange;
+            color: darkorange;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 auto;
+            width: 250px;
+        }
+        
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            font-weight: bold;
+            font-size: 2rem;
+            margin: 1rem;
+            box-shadow: 5px 5px 5px #888;
+            cursor: pointer;
+        }
+     
+     </style>
+     
+  </head>
+    
+ <body>
+     
+     <div class="boxy">
+         
+         <h2>Javascript Calculator</h2>
+         
+        <input type="number" id="numBox" />
+         
+        <!-- buttons for the calcualtor -->
+         
+         <button onlclick="operate('+')">+</button>
+         <button onlclick="operate('-')">-</button>
+         <button onlclick="operate('*')">*</button>
+         <button onlclick="operate('/')">/</button>
+         <button onlclick="operate('**')">^</button>
+         <button onlclick="operate('%')">M</button>
+         
+         <!-- buttons for the = and Clr -->
+         <button onlclick="calculate()">=</button>
+         <button onlclick="clear()">C</button>
+         <h2 id="ansBox" style="border:1px solid #999; padding: 5px; color: #555">ANSWER</h2>
+     
+      </div><!-- end .boxy -->
+     
+     
+         
+   <script type="text/javascript">
+     
+     //Global Vars
+     var num1 = 0; // the first number
+     var num2 = 0; // the second number
+     var oper = ""; // the operator: +, -, *, /, ^, %
+      
+     // Grab the input (numBox) and output (ansBox) boxes  
+       
+     var numBox = document.getElementById("numBox");
+     var ansBox = document.getElementById("ansBox");
+       
+       function operate(op) {
+           
+           num1 = numBox.value; // save the 1st number 
+           num1 = Number(num1);
+           oper = op; // save the operator (op)
+           ansBox.innerHTML = num1 + " " + oper;
+           numBox.value '' = 
+       }
+       
+       function calculate () {
+           num2 = numBox.value;
+           num2 = Number(num2);
+           if (oper == '+') {
+               result = num1 + num2;
+           }
+           // TODO Other Operations here
+           ansBox.innerHTML = `${num1} ${oper} ${num2} = ${result}';
+           numBox.value = ';
+
+       }
+       
+   </script>
+    
+ </body>
+    
+</html>

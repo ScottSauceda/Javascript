@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS-9 Audio Chinese</title>
+<link href="css/audio-slideshow.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="container">
+    	<header>
+        	<h1> Learn the 12 Animals of the Chinese Zodiac </h1>
+            <h2><em>Listen carefully to the Chinese--there's a quiz
+            later!</em></h2>
+        </header>
+    	<div id="bigPic">
+        	<img src="images/zodiac-animal-wheel.png" width="100%" height="auto">
+        </div>
+        
+        <div id="thumbs">
+        </div>
+        
+    </div>
+    
+    <script>
+		var animalArr=["chicken", "cow", "dog", "dragon", "goat", 
+		    "horse", "monkey", "pig", "rabbit", "rat", "snake", "tiger"];
+		var sound= new Audio();
+
+		for(i=0; i<animalArr.length; i++) {
+			var thumb='<img src="images/' + animalArr[i] + '.jpg "width="88px" height="88px" onclick="swapPic(' + i + ')">';
+			document.getElementById("thumbs").innerHTML+=thumb; 
+		}
+		
+		function swapPic(i) {
+			bigPic='<img src="images/' + animalArr[i] + '.jpg "width="100%" height="auto">';
+			//output the first img to bigPic on page load
+			document.getElementById("bigPic").innerHTML=bigPic; 
+			sound.src="audio/" + animalArr[i] + ".mp3";
+			sound.play();
+		}
+	</script>
+</body>
+</html>

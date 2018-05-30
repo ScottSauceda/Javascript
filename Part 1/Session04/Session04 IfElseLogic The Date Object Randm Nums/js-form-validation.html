@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+  <style>
+  
+      .boxy {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: lightskyblue;
+          color: #ff5;
+          min-height: 25vh;
+          font: bold 18px sans-serif;
+          margin: 10px;
+          padding: 10px;
+      }
+    
+      
+  </style>
+      
+  </head>
+    
+  <body>
+      
+  <div class="boxy" id="box1">
+  
+      <!-- for JS valifation, add "onsubmit" event to form tag -->
+      <form method ="post" action="some-page.php" onsubmit="return validateForm()">
+      
+        <h1>JS Form Validation Example</h1>
+        <h2>Choose a Min and a Max Rent</h2>
+            Minimum Rent:<br>
+          <select name="minRent" id="minRent">
+            <option value="1">Any</option>
+            <option value="1000">$1,000</option>
+            <option value="1500">$1,500</option>
+            <option value="2000">$2,000</option>
+            <option value="2500">$2,500</option>
+          </select><br><br>
+              Maximum Rent:<br>
+          <select name="maxRent" id="maxRent">
+            <option value="99999">Any</option>
+            <option value="1500">$1,500</option>
+            <option value="2000">$2,000</option>
+            <option value="2500">$2,500</option>
+            <option value="3000">$3,000</option>
+          </select><br><br>
+          <input type="submit" name="submit" id="submit">
+      </form>
+      
+
+  </div>
+      
+      
+    <script src="js/scripts.js"></script>
+    
+  </body>
+    
+</html>

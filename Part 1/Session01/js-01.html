@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8"/>
+      
+    <meta name="keywords" content="" />
+      
+    <meta name="description" content="" />
+      
+    <style>
+        
+        .boxy {
+          background: coral;
+          color: #ff5;
+          height: 25vh;
+          font: bold 18px sans-serif;
+            
+          margin: 10px;
+          padding: 10px;
+            
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        h1 {
+            color: green;
+        }
+      
+      
+    </style>
+    
+    
+      
+  </head>
+
+  <body>
+    
+    <div class="boxy" id="box1"> JS Output Here </div>
+      
+    <div class="boxy" id="box2">   <input type="text" name="firstName"
+           id="firstname" placeholder="First Name" />
+        
+      
+      <input type="text" name="lastname"
+             id="lastname" placeholder="Last Name" /> </div>
+      
+      
+    
+    <div class="boxy" id="box3"> Numeric Input Here </div>
+      
+      
+      
+    <script>
+      
+      // Write a message to the body
+        
+      // document.write("Hello World from JS");
+        
+     // Ignore this line, its a comment. 
+        
+    /* Longer, multi-line comment
+    
+       more 
+       more
+       more
+    
+    */
+        
+    document.getElementById("box1").innerHTML = "<h1 id='header'>Hello World</h1>";
+        
+    console.log("Successfully wrote box1");
+        
+    var greeting = "Hola!";
+        
+    var price = 149;
+        
+    console.log(greeting);
+        
+    console.log(price);
+        
+    greeting = "hello";
+        console.log(greeting);
+        
+    var firstname = "Luis"
+    
+    var lastname ="Arana"
+    
+    var favoritefruit = "coconut"
+    
+    var message = firstname + " likes " + favoritefruit +"."
+    
+    var msg = '<h1>Hello ' + firstname + " " + favoritefruit + " " + lastname + " from javascript.";
+        
+    document.getElementById("box1").innerHTML = msg;
+    
+    console.log(message)
+        
+    
+     /* var finalgrade = 99;
+    alert(finalgrade);
+        
+    finalgrade = "A+"
+    alert(finalgrade); */
+        
+    var couponcode ;
+        
+    couponcode = 123456;
+        
+    couponcode = "DEAL2018";
+        
+        couponcode = true;
+        
+    // alert(couponcode);
+        
+        
+    // alert(couponcode);
+        
+    //    alert(typeof(couponcode));
+        
+        var checktype = typeof (couponcode);
+      console.log(checktype);
+        
+    
+        
+    
+        
+    
+        
+        
+    </script>
+      
+  </body>
+    
+</html>
